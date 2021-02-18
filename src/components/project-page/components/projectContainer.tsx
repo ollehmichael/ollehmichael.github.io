@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import { red } from "../../../assets/colors";
 
-type GraphContainerProps = {
+type ProjectContainerProps = {
   title: string;
 };
 
-const GraphContainer: FC<GraphContainerProps> = (props) => {
+const ProjectContainer: FC<ProjectContainerProps> = (props) => {
   const { title, children } = props;
   return (
     <div
@@ -38,4 +38,4 @@ const GraphContainer: FC<GraphContainerProps> = (props) => {
   );
 };
 
-export default GraphContainer;
+export default ProjectContainer;
