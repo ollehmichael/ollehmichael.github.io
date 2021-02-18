@@ -2,8 +2,8 @@ import Axios, { CancelToken, Cancel } from "axios";
 
 const SERVER_URL =
   process.env.NODE_ENV === "production"
-    ? "https://ollehmichael.github.io"
-    : "https://ollehmichael.github.io";
+    ? "https://emsdproject.work:52855"
+    : "https://emsdproject.work:52855";
 // : "http://localhost:3001";
 
 export function Login(
@@ -21,31 +21,31 @@ export function Login(
   );
 }
 
-// export function getConsumedSparePartsData(cancelToken?: CancelToken) {
-//   return wrapper.GET("/spare-parts-stock/usageAll", cancelToken);
-// }
+export function getConsumedSparePartsData(cancelToken?: CancelToken) {
+  return wrapper.GET("/spare-parts-stock/usageAll", cancelToken);
+}
 
-// export function getEquipmentInfoData(cancelToken?: CancelToken) {
-//   return wrapper.GET("/equipment-info-record/infoSpecific", cancelToken);
-// }
+export function getEquipmentInfoData(cancelToken?: CancelToken) {
+  return wrapper.GET("/equipment-info-record/infoSpecific", cancelToken);
+}
 
-// export function getAllEquipmentInfoData(cancelToken?: CancelToken) {
-//   return wrapper.GET("/equipment-info-record/equipmentAll", cancelToken);
-// }
+export function getAllEquipmentInfoData(cancelToken?: CancelToken) {
+  return wrapper.GET("/equipment-info-record/equipmentAll", cancelToken);
+}
 
 // export function getEquipmentInfo
 
-// export function getHealthRecordInfoData(cancelToken?: CancelToken) {
-//   return wrapper.GET("/equipment-info-record/healthAll", cancelToken);
-// }
+export function getHealthRecordInfoData(cancelToken?: CancelToken) {
+  return wrapper.GET("/equipment-info-record/healthAll", cancelToken);
+}
 
-// export function getActivityLogs(cancelToken?: CancelToken) {
-//   return wrapper.GET("/activity-logging/getLog", cancelToken);
-// }
+export function getActivityLogs(cancelToken?: CancelToken) {
+  return wrapper.GET("/activity-logging/getLog", cancelToken);
+}
 
-// export function getVideoLogData(cancelToken?: CancelToken) {
-//   return wrapper.GET("/equipment-info-record/getVideos", cancelToken);
-// }
+export function getVideoLogData(cancelToken?: CancelToken) {
+  return wrapper.GET("/equipment-info-record/getVideos", cancelToken);
+}
 
 // Data hardcoded temporarily
 // export function getSmartMaintenanceData(cancelToken?: CancelToken) {

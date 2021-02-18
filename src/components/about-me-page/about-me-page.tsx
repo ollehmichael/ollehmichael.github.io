@@ -1,8 +1,9 @@
 import React from "react";
-// import { useContactPageHooks } from "./about-me-page-hooks";
+import { useAboutMePageHooks } from "./about-me-page-hooks";
 
 const AboutMePage = () => {
-  return <div>About Me</div>;
+  useAboutMePageHooks();
+  return <div> About Me Page </div>;
 };
 
 export default AboutMePage;

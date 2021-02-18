@@ -6,35 +6,51 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { IsLoggedIn, CurrentUser } from "./modules/global/global-states";
 import MenuBar from "./components/menu-bar";
 import { Auth } from "./api";
+import NotificationBox from "./components/notification-box";
 // PAGE IMPORT
 // PAGE IMPORT - HOME PAGE / DASHBOARD PAGE IMPORT
-import MainPage from "./components/main-page";
-import ProjectPage from "./components/project-page";
-import ContactPage from "./components/contact-page";
+import DashboardPage from "./components/dashboard-page/dashboard-page";
+// PAGE IMPORT - ABOUT ME PAGE IMPORT
 import AboutMePage from "./components/about-me-page";
+// PAGE IMPORT - PROJECTS PAGE IMPORT
+import ProjectPage from "./components/project-page";
+// PAGE IMPORT - AREAS OF INTEREST PAGE IMPORT
+import InterestPage from "./components/interest-page";
+// PAGE IMPORT - CONTACT ME PAGE IMPORT
+import SmartTroubleShootingPage from "./components/smart-troubleshooting-page";
 
 function App() {
   const isLoggedIn = useRecoilValue(IsLoggedIn);
   useLoggedinState();
   return (
     <div className="App">
+      <NotificationBox />
       <Router>
         {isLoggedIn && <MenuBar />}
         <Switch>
+          {/* HOME PAGE / DASHBOARD PAGE */}
           <ProtectedRoute path="/" exact>
-            <MainPage />
+            <DashboardPage />
           </ProtectedRoute>
 
+          {/* ABOUT ME PAGE */}
           <ProtectedRoute path="/about-me" exact>
             <AboutMePage />
           </ProtectedRoute>
 
+          {/* PROJECT PAGE */}
           <ProtectedRoute path="/projects" exact>
             <ProjectPage />
           </ProtectedRoute>
 
-          <ProtectedRoute path="/contact-me" exact>
-            <ContactPage />
+          {/* AREAS OF INTEREST PAGE */}
+          <ProtectedRoute path="/study-with-mike" exact>
+            <InterestPage />
+          </ProtectedRoute>
+
+          {/* CONTACT ME PAGE */}
+          <ProtectedRoute path="/contact-mike-right-now" exact>
+            <SmartTroubleShootingPage />
           </ProtectedRoute>
 
           <Redirect to="/" />

@@ -5,12 +5,12 @@ import { IsLoggedIn } from "../../modules/global/global-states";
 import { Auth } from "../../api";
 import LoginPage from "../login-page";
 
-type ProtectedRouteProps = {
+type ProtectedRoute = {
   path: string;
   exact?: boolean;
 };
 
-const ProtectedRoute: FC<ProtectedRouteProps> = (props) => {
+const ProtectedRoute: FC<ProtectedRoute> = (props) => {
   const { path, exact } = props;
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(IsLoggedIn);
   if (isLoggedIn && (Auth.getJWT() === "" || Auth.getJWT() === undefined)) {
