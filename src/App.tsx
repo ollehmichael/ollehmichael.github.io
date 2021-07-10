@@ -6,42 +6,40 @@ import {
   Route,
 } from "react-router-dom";
 import "./App.css";
-import NavBar from "./components/nav-bar";
 // PAGES
-import DashboardPage from "./components/dashboard-page/dashboard-page";
+import * as PageRoute from "./pages/page-route";
+import HomePage from "./pages/HomePage";
+import AboutMePage from "./pages/AboutMePage";
+import ProjectsPage from "./pages/ProjectsPage";
+import InterestsPage from "./pages/InterestsPage";
+import ContactPage from "./pages/ContactPage";
 
 function App() {
   return (
     <div>
       <Router>
-        <NavBar />
         <Switch>
-          {/* HOME PAGE / DASHBOARD PAGE */}
-          <Route path="/" exact>
-            <DashboardPage />
+          <Route path={PageRoute.Home.path} exact>
+            <HomePage />
           </Route>
 
-          {/* ABOUT ME PAGE */}
-          <Route path="/about-mike" exact>
-            {/* <AboutMePage /> */}
+          <Route path={PageRoute.AboutMe.path} exact>
+            <AboutMePage />
           </Route>
 
-          {/* CONTACT PAGE */}
-          <Route path="/hire-me-please" exact>
-            {/* <ContactPage /> */}
+          <Route path={PageRoute.Projects.path} exact>
+            <ProjectsPage />
           </Route>
 
-          {/* PROJECTS PAGE */}
-          <Route path="/projects" exact>
-            {/* <ProjectsPage /> */}
+          <Route path={PageRoute.Interests.path} exact>
+            <InterestsPage />
           </Route>
 
-          {/* INTERESTS PAGE */}
-          <Route path="/interests" exact>
-            {/* <InterestsPage /> */}
+          <Route path={PageRoute.Contact.path} exact>
+            <ContactPage />
           </Route>
 
-          <Redirect to="/" />
+          <Redirect to={PageRoute.Home.path} />
         </Switch>
       </Router>
     </div>
