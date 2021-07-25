@@ -11,7 +11,7 @@ import {
 } from "semantic-ui-react";
 import ResponsiveContainer from "../components/ResponsiveContainer";
 
-const ProjectsPage = () => (
+const InterestsPage = () => (
   <ResponsiveContainer>
     <Segment style={{ padding: "8em 0em" }} vertical>
       <Container text>
@@ -53,4 +53,4 @@ const ProjectsPage = () => (
   </ResponsiveContainer>
 );
 
-export default ProjectsPage;
+export default InterestsPage;
