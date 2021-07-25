@@ -28,7 +28,7 @@ const HomePage = () => (
               <HomeContent
                 title="Contact Me"
                 content="You can contact me through many different ways! Please press the button below and shoot me a message!"
-                buttonContent="Go to Work / Projects!"
+                buttonContent="Contact Mike!"
                 buttonRoute={PageRoute.Contact.path}
               />
             </Grid.Column>
@@ -37,7 +37,7 @@ const HomePage = () => (
                 title="Other Interests"
                 content={`I truly do love programming, but I also like spending my time
                 indulging in other hobbies. Find out what hobbies Mike has! \n \n`}
-                buttonContent="Go Check Him Out"
+                buttonContent="Who is this guy?"
                 buttonRoute={PageRoute.Interests.path}
               />
             </Grid.Column>
