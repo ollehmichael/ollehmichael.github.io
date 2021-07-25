@@ -26,7 +26,10 @@ class DesktopContainer extends Component {
           <Segment
             inverted
             textAlign="center"
-            style={{ minHeight: 400, padding: "1em 0em" }}
+            style={{
+              minHeight: 400,
+              padding: "1em 0em",
+            }}
             vertical
           >
             <Menu
@@ -36,7 +39,7 @@ class DesktopContainer extends Component {
               secondary={!fixed}
               size="large"
             >
-              <Container>
+              <Container text>
                 <Menu.Item as={NavLink} to={PageRoute.Home.path} name="Home">
                   Home
                 </Menu.Item>
