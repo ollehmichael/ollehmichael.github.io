@@ -7,7 +7,8 @@ const HomeHeader = ({ mobile = false }) => (
   <Container text style={{ height: "10em" }}>
     <Header
       as="h1"
-      content="Welcome! This is Mike's Space."
+      // content="Welcome! This is Mike's Space."
+      content="Mike's website is currently under construction! Please be patient :)"
       inverted
       style={{
         fontSize: mobile === true ? "1.5em" : "2em",
