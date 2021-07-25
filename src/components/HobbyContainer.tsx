@@ -1,17 +1,14 @@
 import React from "react";
 import { Button, Header, Divider } from "semantic-ui-react";
-import { NavLink } from "react-router-dom";
 
 type HobbyProps = {
   title: string;
   heading: string;
   content: string;
-  buttonRoute: string;
-  buttonContent: string;
 };
 
 const HobbyContainer: React.FC<HobbyProps> = (props) => {
-  const { title, heading, content, buttonRoute, buttonContent } = props;
+  const { title, heading, content } = props;
   return (
     <div>
       <Divider
@@ -29,9 +26,6 @@ const HobbyContainer: React.FC<HobbyProps> = (props) => {
         {heading}
       </Header>
       <p style={{ fontSize: "1.33em" }}>{content}</p>
-      <Button as={NavLink} to={buttonRoute} size="large">
-        {buttonContent}
-      </Button>
     </div>
   );
 };
