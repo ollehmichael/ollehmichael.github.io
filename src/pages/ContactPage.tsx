@@ -1,56 +1,58 @@
 import React from "react";
-import {
-  Button,
-  Container,
-  Divider,
-  Grid,
-  Header,
-  Image,
-  List,
-  Segment,
-} from "semantic-ui-react";
+import { Button, Container, Icon, Grid, Segment } from "semantic-ui-react";
 import ResponsiveContainer from "../components/ResponsiveContainer";
 
-const ProjectsPage = () => (
+const ContactMePage = () => (
   <ResponsiveContainer>
     <Segment style={{ padding: "8em 0em" }} vertical>
-      <Container text>
-        <Header as="h3" style={{ fontSize: "2em" }}>
-          Breaking The Grid, Grabs Your Attention
-        </Header>
-        <p style={{ fontSize: "1.33em" }}>
-          Instead of focusing on content creation and hard work, we have learned
-          how to master the art of doing nothing by providing massive amounts of
-          whitespace and generic content that can seem massive, monolithic and
-          worth your attention.
-        </p>
-        <Button as="a" size="large">
-          Read More
-        </Button>
-
-        <Divider
-          as="h4"
-          className="header"
-          horizontal
-          style={{ margin: "3em 0em", textTransform: "uppercase" }}
-        >
-          <a href="#">Case Studies</a>
-        </Divider>
-
-        <Header as="h3" style={{ fontSize: "2em" }}>
-          Did We Tell You About Our Bananas?
-        </Header>
-        <p style={{ fontSize: "1.33em" }}>
-          Yes I know you probably disregarded the earlier boasts as non-sequitur
-          filler content, but it's really true. It took years of gene splicing
-          and combinatory DNA research, but our bananas can really dance.
-        </p>
-        <Button as="a" size="large">
-          I'm Still Quite Interested
-        </Button>
+      <Container>
+        <Grid>
+          <Grid.Row>
+            <Grid.Column width={8}>{"ContactMeContainer"}</Grid.Column>
+            <Grid.Column width={8} verticalAlign="middle">
+              <p style={{ fontSize: "2em" }}>
+                You can also reach me at these Social Media!
+              </p>
+              <Grid.Row>
+                <Grid.Column width={8} style={{ marginBottom: "2em" }}>
+                  <Button
+                    color="facebook"
+                    size="large"
+                    style={{ marginRight: "2em", width: "10em" }}
+                  >
+                    <Icon name="facebook" /> Facebook
+                  </Button>
+                  <Button
+                    color="twitter"
+                    size="large"
+                    style={{ marginRight: "2em", width: "10em" }}
+                  >
+                    <Icon name="twitter" /> Twitter
+                  </Button>
+                </Grid.Column>
+                <Grid.Column width={8}>
+                  <Button
+                    color="linkedin"
+                    size="large"
+                    style={{ marginRight: "2em", width: "10em" }}
+                  >
+                    <Icon name="linkedin" /> LinkedIn
+                  </Button>
+                  <Button
+                    color="instagram"
+                    size="large"
+                    style={{ marginRight: "2em", width: "10em" }}
+                  >
+                    <Icon name="instagram" /> Instagram
+                  </Button>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </Container>
     </Segment>
   </ResponsiveContainer>
 );
 
-export default ProjectsPage;
+export default ContactMePage;
