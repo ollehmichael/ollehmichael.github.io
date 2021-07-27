@@ -10,44 +10,37 @@ import {
   Segment,
 } from "semantic-ui-react";
 import ResponsiveContainer from "../components/ResponsiveContainer";
+import ProjectContainer from "../components/ProjectContainer";
 
 const ProjectsPage = () => (
   <ResponsiveContainer>
     <Segment style={{ padding: "8em 0em" }} vertical>
       <Container text>
         <Header as="h3" style={{ fontSize: "2em" }}>
-          WORK
+          MY WORK
         </Header>
         <p style={{ fontSize: "1.33em" }}>
-          Instead of focusing on content creation and hard work, we have learned
-          how to master the art of doing nothing by providing massive amounts of
-          whitespace and generic content that can seem massive, monolithic and
-          worth your attention.
+          I am interested in a wide range of technologies and skills. Below are
+          some of the work I have completed to this date! Please check them out
+          and feel free to contact me if you have any questions!
         </p>
-        <Button as="a" size="large">
-          Read More
+        <Button href="#project1" size="large">
+          Project 1
         </Button>
-
-        <Divider
-          as="h4"
-          className="header"
-          horizontal
-          style={{ margin: "3em 0em", textTransform: "uppercase" }}
-        >
-          <a href="#">Case Studies</a>
-        </Divider>
-
-        <Header as="h3" style={{ fontSize: "2em" }}>
-          Did We Tell You About Our Bananas?
-        </Header>
-        <p style={{ fontSize: "1.33em" }}>
-          Yes I know you probably disregarded the earlier boasts as non-sequitur
-          filler content, but it's really true. It took years of gene splicing
-          and combinatory DNA research, but our bananas can really dance.
-        </p>
-        <Button as="a" size="large">
-          I'm Still Quite Interested
+        <Button href="#project2" size="large">
+          Project 2
         </Button>
+        <Button href="#project3" size="large">
+          Project 3
+        </Button>
+        <div id="project1">
+          <ProjectContainer
+            title="Project 1"
+            githubLink="github.com/ollehmichael"
+            languages="Javascript, React, Typescript"
+            description="My first project was to make my portfolio website"
+          />
+        </div>
       </Container>
     </Segment>
   </ResponsiveContainer>
