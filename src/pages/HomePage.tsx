@@ -45,7 +45,7 @@ const HomePage = () => (
         </Grid>
       </Container>
     </Segment>
-    <FooterContainer />
+    <FooterContainer as="" link="" title="" />
   </ResponsiveContainer>
 );
 

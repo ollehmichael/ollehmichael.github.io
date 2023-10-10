@@ -22,23 +22,18 @@ function App() {
           <Route path={PageRoute.Home.path} exact>
             <HomePage />
           </Route>
-
           <Route path={PageRoute.AboutMe.path} exact>
             <AboutMePage />
           </Route>
-
           <Route path={PageRoute.Projects.path} exact>
             <ProjectsPage />
           </Route>
-
           <Route path={PageRoute.Interests.path} exact>
             <InterestsPage />
           </Route>
-
           <Route path={PageRoute.Contact.path} exact>
             <ContactPage />
           </Route>
-
           <Redirect to={PageRoute.Home.path} />
         </Switch>
       </Router>
