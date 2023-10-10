@@ -1,48 +1,33 @@
-import React, { useEffect } from "react";
+import './App.css';
+import {Navigate, Route, Routes} from 'react-router-dom';
+import {Box} from '@mui/material';
 import {
-  BrowserRouter as Router,
-  Redirect,
-  Switch,
-  Route,
-} from "react-router-dom";
-import "./App.css";
-// PAGES
-import * as PageRoute from "./pages/page-route";
-import HomePage from "./pages/HomePage";
-import AboutMePage from "./pages/AboutMePage";
-import ProjectsPage from "./pages/ProjectsPage";
-import InterestsPage from "./pages/InterestsPage";
-import ContactPage from "./pages/ContactPage";
+  AboutMePage,
+  HomePage,
+  ProjectDetailPage,
+  ProjectListPage,
+} from './pages';
+import Header from './components/Header';
 
 function App() {
   return (
-    <div>
-      <Router>
-        <Switch>
-          <Route path={PageRoute.Home.path} exact>
-            <HomePage />
-          </Route>
-
-          <Route path={PageRoute.AboutMe.path} exact>
-            <AboutMePage />
-          </Route>
-
-          <Route path={PageRoute.Projects.path} exact>
-            <ProjectsPage />
-          </Route>
-
-          <Route path={PageRoute.Interests.path} exact>
-            <InterestsPage />
-          </Route>
-
-          <Route path={PageRoute.Contact.path} exact>
-            <ContactPage />
-          </Route>
-
-          <Redirect to={PageRoute.Home.path} />
-        </Switch>
-      </Router>
-    </div>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100vw',
+        height: '100vh',
+      }}
+    >
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about-me" element={<AboutMePage />} />
+        <Route path="/projects" element={<ProjectListPage />} />
+        <Route path="/projects/:projectID" element={<ProjectDetailPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Box>
   );
 }
 

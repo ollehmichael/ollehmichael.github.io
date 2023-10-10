@@ -1,16 +1,25 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import "semantic-ui-css/semantic.min.css";
-import App from "./App";
-import { RecoilRoot } from "recoil";
-import reportWebVitals from "./reportWebVitals";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import {ThemeProvider} from '@mui/material';
+import {theme} from './theme/theme';
+// import {Provider} from 'react-redux';
+import {BrowserRouter} from 'react-router-dom';
+import reportWebVitals from './reportWebVitals';
+import App from './App';
 
-ReactDOM.render(
-  <RecoilRoot>
-    <App />
-  </RecoilRoot>,
-  document.getElementById("root")
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
+root.render(
+  <React.StrictMode>
+    <ThemeProvider theme={theme}>
+      {/* <Provider store={stor}> */}
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+      {/* </Provider> */}
+    </ThemeProvider>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

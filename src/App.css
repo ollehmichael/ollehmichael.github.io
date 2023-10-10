@@ -1,40 +1,57 @@
-/* .App {
-  width: 100vw;
-  height: 100vh;
-  color: #808080;
-} */
-/* 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  padding: 0;
+  minheight: 100vh;
+  overflow: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@font-face {
+  font-family: 'Lato Light';
+  src: url('./assets/fonts/Lato-Light.ttf') format('truetype');
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@font-face {
+  font-family: 'Raleway Bold';
+  src: url('./assets/fonts/Raleway-Bold.ttf') format('truetype');
 }
 
-.App-link {
-  color: #61dafb;
+@font-face {
+  font-family: 'Raleway Regular';
+  src: url('./assets/fonts/Raleway-Medium.ttf') format('truetype');
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
+@font-face {
+  font-family: 'Archivo Regular';
+  src: url('./assets/fonts/Archivo-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'BodoniModa Regular';
+  src: url('./assets/fonts/BodoniModa_48pt-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'BodoniModa Italic';
+  src: url('./assets/fonts/BodoniModa_28pt-SemiBoldItalic.ttf')
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'Roclette Pro Medium';
+  src: url('./assets/fonts/RoclettePro-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roclette Pro';
+  src: url('./assets/fonts/RoclettePro-Normal.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roclette Pro Light';
+  src: url('./assets/fonts/RoclettePro-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roclette Pro Thin';
+  src: url('./assets/fonts/RoclettePro-Thin.ttf') format('truetype');
+}
