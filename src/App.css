@@ -1,9 +1,7 @@
-/* .App {
-  width: 100vw;
-  height: 100vh;
-  color: #808080;
-} */
-/* 
+.App {
+  text-align: center;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -37,4 +35,4 @@
   to {
     transform: rotate(360deg);
   }
-} */
+}
