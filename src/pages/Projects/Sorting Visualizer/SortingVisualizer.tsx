@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {getMergeSortAnimations} from './sortingAlgorithms';
 import {Box, Button} from '@mui/material';
-import {PageCard as ProjectWrapper} from '../../../components/Molecules/PageCard';
+import {PageCard as ProjectWrapper} from '../../../components/PageCard';
 import {randomIntFromInterval} from '../../../utils/sortingUtils';
 
 const ANIMATION_SPEED_MS = 15;
