@@ -99,12 +99,25 @@ export const ProjectListPage = () => {
           }}
         >
           <FilterContainer>
-            <FilterText>Filter by Domain:</FilterText>
+            <FilterText
+              sx={{
+                opacity: showComponents ? 1 : 0,
+                transition: showComponents ? 'all 0.5s ease-in 0.5s' : 'none',
+              }}
+            >
+              Filter by Domain:
+            </FilterText>
             {uniqueTagList.map((tag: string, index: number) => {
               return (
                 <FilterButton
                   key={`tag-${index}`}
                   onClick={() => handleClickFilter(tag)}
+                  style={{
+                    opacity: showComponents ? 1 : 0,
+                    transition: showComponents
+                      ? `all 0.5s ease-in ${index * 0.1 + 0.6}s`
+                      : 'none',
+                  }}
                 >
                   {tag}
                 </FilterButton>
@@ -112,12 +125,25 @@ export const ProjectListPage = () => {
             })}
           </FilterContainer>
           <FilterContainer>
-            <FilterText>Filter by Technology:</FilterText>
+            <FilterText
+              sx={{
+                opacity: showComponents ? 1 : 0,
+                transition: showComponents ? 'all 0.5s ease-in 0.5s' : 'none',
+              }}
+            >
+              Filter by Technology:
+            </FilterText>
             {uniqueTechStackList.map((tech: string, index: number) => {
               return (
                 <FilterButton
                   key={`tech-${index}`}
                   onClick={() => handleClickFilter(tech)}
+                  style={{
+                    opacity: showComponents ? 1 : 0,
+                    transition: showComponents
+                      ? `all 0.5s ease-in ${index * 0.1 + 0.6}s`
+                      : 'none',
+                  }}
                 >
                   {tech}
                 </FilterButton>
@@ -127,11 +153,19 @@ export const ProjectListPage = () => {
           <ProjectItemsContainer>
             {filteredProjectItems.map(
               (project: ProjectItemType, index: number) => {
+                const transitionDelay =
+                  index % 3 === 0 ? '0.5s' : index % 3 === 1 ? '0.8s' : '1.1s';
                 return (
                   <ProjectItem
                     index={index}
                     key={`project-items-${index}`}
                     project={project}
+                    style={{
+                      opacity: showComponents ? 1 : 0,
+                      transition: showComponents
+                        ? `all 0.5s ease-in ${transitionDelay}`
+                        : 'none',
+                    }}
                   />
                 );
               }

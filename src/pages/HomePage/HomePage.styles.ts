@@ -37,16 +37,6 @@ export const NameContainer = styled(Box)(() => ({
   display: 'flex',
 }));
 
-export const NameTypography = styled(Typography)(() => ({
-  display: 'flex',
-  boxSizing: 'border-box',
-  fontFamily: 'BodoniModa Regular',
-  fontSize: '6em',
-  letterSpacing: '0rem',
-  textAlign: 'center',
-  whiteSpace: 'pre-wrap',
-}));
-
 export const TitleTypography = styled(Typography)(() => ({
   boxSizing: 'border-box',
   fontFamily: 'Archivo Regular',

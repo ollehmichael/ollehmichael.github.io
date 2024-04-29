@@ -34,7 +34,7 @@ export const AboutMePage = () => {
               transition: showComponents ? 'all 0.5s ease-in' : 'none',
             }}
           >
-            WHO IS MIKE
+            WHO AM I?
           </IntroTitle>
           <IntroText
             sx={{

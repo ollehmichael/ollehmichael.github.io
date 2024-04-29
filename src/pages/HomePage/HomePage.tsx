@@ -5,7 +5,6 @@ import {
   HomeContainer,
   HomeWrapper,
   NameContainer,
-  NameTypography,
   TitleTypography,
 } from './HomePage.styles';
 import {SlantedImage} from '../../components/Molecules';

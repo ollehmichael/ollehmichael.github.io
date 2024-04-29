@@ -4,6 +4,8 @@ import {
   CardActionArea,
   CardContent,
   CardMedia,
+  SxProps,
+  Theme,
   Typography,
 } from '@mui/material';
 import {ProjectTag} from '../Molecules';
@@ -13,13 +15,15 @@ import {useNavigate} from 'react-router-dom';
 const ProjectItem = ({
   index,
   project,
+  style,
 }: {
   index: number;
   project: ProjectItemType;
+  style?: SxProps<Theme>;
 }) => {
   const navigate = useNavigate();
   return (
-    <Card raised>
+    <Card raised sx={{...style}}>
       <CardActionArea
         onClick={() => navigate(`/projects/${project.projectID}`)}
       >

@@ -1,11 +1,14 @@
 import {useState} from 'react';
 import {MyIconButton} from '../Atoms';
+import {SxProps, Theme} from '@mui/material';
 
 const FilterButton = ({
   children,
+  style,
   onClick,
 }: {
   children: React.ReactNode;
+  style?: SxProps<Theme>;
   onClick: React.MouseEventHandler;
 }) => {
   const [focused, setFocused] = useState<boolean>(false);
@@ -33,6 +36,7 @@ const FilterButton = ({
         letterSpacing: '1.5px',
         gap: '10px',
         transition: 'all 0.2s ease-in',
+        ...style,
       }}
     >
       {children}
