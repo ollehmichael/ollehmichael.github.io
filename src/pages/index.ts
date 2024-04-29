@@ -1,2 +1,4 @@
+export {AboutMePage} from './AboutMePage/AboutMePage';
 export {HomePage} from './HomePage/HomePage';
-export {ProjectPage} from './ProjectPage/ProjectPage';
+export {ProjectListPage} from './ProjectListPage/ProjectListPage';
+export {ProjectDetailPage} from './ProjectDetailPage/ProjectDetailPage';

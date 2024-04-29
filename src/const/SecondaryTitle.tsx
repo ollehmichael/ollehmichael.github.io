@@ -3,5 +3,5 @@ export const secondaryTitleList = [
   'Aspiring DevSecOps Wizard',
   'Former Drill Sergeant',
   'Collaboration Addict',
-  'Progressive Overloading Professional/Physical Growth',
+  // 'Progressive Overloading Professional/Physical Growth',
 ];

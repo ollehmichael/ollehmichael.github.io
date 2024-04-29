@@ -1,57 +1,66 @@
-import {Box, Typography, styled} from '@mui/material';
+import {Box, styled, Typography} from '@mui/material';
 
-export const HomeContainer = styled(Box)(() => ({
+export const HomeWrapper = styled(Box)(() => ({
   display: 'flex',
-  boxSizing: 'border-box',
   flexDirection: 'column',
-  alignItems: 'center',
-  alignSelf: 'center',
-  width: '90vw',
-  height: '90vh',
-}));
-
-export const HomeTitleContainer = styled(Box)(() => ({
-  display: 'flex',
   boxSizing: 'border-box',
-  flexDirection: 'column',
-  justifyContent: 'space-evenly',
-  alignItems: 'center',
-  alignSelf: 'center',
-  marginTop: '50vh',
-  height: 'fit-content',
-  minHeight: '15vh',
-  width: '100%',
-}));
-
-export const PrimaryTitle = styled(Typography)(() => ({
-  color: 'white',
-  letterSpacing: '5px',
-  fontSize: '90px',
-  fontFamily: 'Roclette Pro',
-}));
-
-export const SecondaryTitle = styled(Typography)(() => ({
-  color: '#02CCFE',
-  fontSize: '40px',
-  fontFamily: 'Roclette Pro',
-}));
-
-export const HomeProjectItemWrapper = styled(Box)(() => ({
-  display: 'flex',
-  boxSizing: 'border-box',
-  flexDirection: 'column',
-  alignItems: 'center',
-  alignSelf: 'flex-end',
   width: '100%',
   height: '100%',
 }));
 
-export const HomeProjectItemContainer = styled(Box)(() => ({
-  display: 'grid',
+export const HomeContainer = styled(Box)(() => ({
+  display: 'flex',
   boxSizing: 'border-box',
-  padding: '10px',
+  position: 'relative',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: 'calc(100% - 10vw)',
+  height: '100%',
+  margin: 'auto auto',
+}));
+
+export const ForegroundContainer = styled(Box)(() => ({
+  display: 'flex',
+  flexDirection: 'column',
+  position: 'relative',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  boxSizing: 'border-box',
   width: '100%',
-  height: 'fit-content',
-  gap: '20px',
-  gridTemplateColumns: '1fr 1fr 1fr',
+  height: '50%',
+  zIndex: 1,
+  background: 'transparent',
+}));
+
+export const NameContainer = styled(Box)(() => ({
+  display: 'flex',
+}));
+
+export const NameTypography = styled(Typography)(() => ({
+  display: 'flex',
+  boxSizing: 'border-box',
+  fontFamily: 'BodoniModa Regular',
+  fontSize: '6em',
+  letterSpacing: '0rem',
+  textAlign: 'center',
+  whiteSpace: 'pre-wrap',
+}));
+
+export const TitleTypography = styled(Typography)(() => ({
+  boxSizing: 'border-box',
+  fontFamily: 'Archivo Regular',
+  fontSize: '8em',
+  letterSpacing: '0.75rem',
+  textAlign: 'center',
+  whiteSpace: 'pre-wrap',
+}));
+
+export const BackgroundContainer = styled(Box)(() => ({
+  position: 'absolute',
+  boxSizing: 'border-box',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '40%',
+  height: '40%',
 }));

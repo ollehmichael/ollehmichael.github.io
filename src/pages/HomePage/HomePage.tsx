@@ -1,76 +1,77 @@
 import {useEffect, useState} from 'react';
-import {PageCard as HomeWrapper} from '../../components/PageCard';
-import {ProjectItem} from '../../components/ProjectItem';
-import {ProjectItems} from '../../const/ProjectItems';
-import {ProjectItemType} from '../../type/ProjectItem';
 import {
+  BackgroundContainer,
+  ForegroundContainer,
   HomeContainer,
-  HomeProjectItemContainer,
-  HomeProjectItemWrapper,
-  HomeTitleContainer,
-  PrimaryTitle,
-  SecondaryTitle,
+  HomeWrapper,
+  NameContainer,
+  NameTypography,
+  TitleTypography,
 } from './HomePage.styles';
-import {secondaryTitleList} from '../../const/SecondaryTitle';
+import {SlantedImage} from '../../components/Molecules';
+import TransformingWords from '../../components/TransformingWords';
 
 export const HomePage = () => {
   const [showComponents, setShowComponents] = useState<boolean>(false);
+  const backgroundImageSource =
+    'url(' + require('../../assets/images/appBackground.png') + ')';
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowComponents(true);
-    }, 200);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
 
-  const WordDisplay = ({words}: {words: string[]}) => {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [isVisible, setIsVisible] = useState(true);
-
-    useEffect(() => {
-      const timer = setTimeout(() => {
-        setIsVisible(false);
-        setTimeout(() => {
-          setCurrentIndex((prevIndex) => (prevIndex + 1) % words.length);
-          setIsVisible(true);
-        }, 500);
-      }, 2000);
-
-      return () => clearTimeout(timer);
-    }, [currentIndex, words]);
-
-    return (
-      <SecondaryTitle
-        sx={{
-          opacity: isVisible ? 1 : 0,
-          transition: 'opacity 0.5s ease-in-out',
-        }}
-      >
-        {words[currentIndex]}
-      </SecondaryTitle>
-    );
-  };
-
   return (
     <HomeWrapper>
-      <HomeContainer
-        sx={{
-          opacity: showComponents ? 1 : 0,
-          transition: showComponents ? 'opacity 0.5s ease-in' : 'none',
-        }}
-      >
-        <HomeTitleContainer>
-          <PrimaryTitle>Michael Han</PrimaryTitle>
-          <WordDisplay words={secondaryTitleList} />
-        </HomeTitleContainer>
-        <HomeProjectItemWrapper>
-          <HomeProjectItemContainer>
-            {ProjectItems.map((item: ProjectItemType, idx: number) => (
-              <ProjectItem key={`project_${idx}`} item={item} />
-            ))}
-          </HomeProjectItemContainer>
-        </HomeProjectItemWrapper>
+      <HomeContainer>
+        <ForegroundContainer>
+          <NameContainer
+            sx={{
+              opacity: showComponents ? 1 : 0,
+              transition: 'all 1s ease-in-out 0.5s',
+            }}
+          >
+            <TransformingWords
+              freq={3000}
+              words={['MICHAEL HAN', 'BYONG CHEOL HAN']}
+              style={{
+                display: 'flex',
+                boxSizing: 'border-box',
+                fontFamily: 'BodoniModa Regular',
+                fontSize: '6em',
+                letterSpacing: '0rem',
+                textAlign: 'center',
+                whiteSpace: 'pre-wrap',
+              }}
+            />
+          </NameContainer>
+          <TitleTypography
+            sx={{
+              opacity: showComponents ? 1 : 0,
+              transition: 'all 1s ease-in-out 2s',
+            }}
+          >
+            PORTFOLIO
+          </TitleTypography>
+        </ForegroundContainer>
+        <BackgroundContainer
+          sx={{
+            filter: 'grayScale(100%)',
+            opacity: showComponents ? 0.75 : 1,
+            transition: 'all 1s ease-in-out',
+          }}
+        >
+          <SlantedImage
+            width="100%"
+            height="100%"
+            filter="none"
+            source={backgroundImageSource}
+            rotateDeg="5"
+          />
+        </BackgroundContainer>
       </HomeContainer>
     </HomeWrapper>
   );

@@ -1,20 +1,56 @@
 body {
-  background-image: linear-gradient(
-      rgba(0, 0, 0, 0.3),
-      rgba(0, 0, 0, 0.4),
-      rgba(0, 0, 0, 1)
-    ),
-    url('/src/assets/images/appBackground.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: absolute;
-  /* font-family: 'Roclette Pro'; */
   margin: 0;
   padding: 0;
+  minheight: 100vh;
+}
+
+@font-face {
+  font-family: 'Lato Light';
+  src: url('./assets/fonts/Lato-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Raleway Bold';
+  src: url('./assets/fonts/Raleway-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Raleway Regular';
+  src: url('./assets/fonts/Raleway-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Archivo Regular';
+  src: url('./assets/fonts/Archivo-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'BodoniModa Regular';
+  src: url('./assets/fonts/BodoniModa_48pt-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'BodoniModa Italic';
+  src: url('./assets/fonts/BodoniModa_28pt-SemiBoldItalic.ttf')
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'Roclette Pro Medium';
+  src: url('./assets/fonts/RoclettePro-Medium.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Roclette Pro';
   src: url('./assets/fonts/RoclettePro-Normal.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roclette Pro Light';
+  src: url('./assets/fonts/RoclettePro-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roclette Pro Thin';
+  src: url('./assets/fonts/RoclettePro-Thin.ttf') format('truetype');
 }
