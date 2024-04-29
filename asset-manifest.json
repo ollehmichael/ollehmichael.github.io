@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3af51e0d.css",
+    "main.js": "/static/js/main.26bee24e.js",
+    "static/js/787.7da95b79.chunk.js": "/static/js/787.7da95b79.chunk.js",
+    "static/media/cloudVPN.png": "/static/media/cloudVPN.f8652705e4c645af46a8.png",
+    "static/media/appBackground.png": "/static/media/appBackground.32ba1ed87a725d165882.png",
+    "static/media/basketballFoul.png": "/static/media/basketballFoul.5c8b12917d2954b427da.png",
+    "static/media/sortingAlgorithms.png": "/static/media/sortingAlgorithms.54c5a778a54f9d2f7da9.png",
+    "static/media/lotteryAlgorithm.png": "/static/media/lotteryAlgorithm.f88972a60da7363ad96f.png",
+    "static/media/mobileApp.png": "/static/media/mobileApp.8ebf90e233166cb4e2f2.png",
+    "static/media/dataTransformation.png": "/static/media/dataTransformation.cb6fa74a1eb105651446.png",
+    "static/media/Raleway-Medium.ttf": "/static/media/Raleway-Medium.1a3483dd7a2052f30ede.ttf",
+    "static/media/Raleway-Bold.ttf": "/static/media/Raleway-Bold.757abe402eb07a0ab739.ttf",
+    "static/media/Archivo-Regular.ttf": "/static/media/Archivo-Regular.27598737383bc056dda8.ttf",
+    "static/media/Lato-Light.ttf": "/static/media/Lato-Light.c7400fcad9e48ca9043f.ttf",
+    "static/media/BodoniModa_28pt-SemiBoldItalic.ttf": "/static/media/BodoniModa_28pt-SemiBoldItalic.fc010287087a2bf29cf5.ttf",
+    "static/media/RoclettePro-Medium.ttf": "/static/media/RoclettePro-Medium.827c4e8993db403d0a7a.ttf",
+    "static/media/RoclettePro-Normal.ttf": "/static/media/RoclettePro-Normal.852e9d14487a1eef7505.ttf",
+    "static/media/RoclettePro-Light.ttf": "/static/media/RoclettePro-Light.0b209cbf94f7f51e33cf.ttf",
+    "static/media/BodoniModa_48pt-Regular.ttf": "/static/media/BodoniModa_48pt-Regular.b66d3697cf51feb11fde.ttf",
+    "static/media/RoclettePro-Thin.ttf": "/static/media/RoclettePro-Thin.3d3d4db8632f0f058b8a.ttf",
+    "index.html": "/index.html",
+    "main.3af51e0d.css.map": "/static/css/main.3af51e0d.css.map",
+    "main.26bee24e.js.map": "/static/js/main.26bee24e.js.map",
+    "787.7da95b79.chunk.js.map": "/static/js/787.7da95b79.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3af51e0d.css",
+    "static/js/main.26bee24e.js"
+  ]
+}
