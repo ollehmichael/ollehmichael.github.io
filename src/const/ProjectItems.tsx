@@ -1,8 +1,8 @@
 import {
-  BasketballFoul,
-  CloudVPN,
+  // BasketballFoul,
+  // CloudVPN,
   DataTransformation,
-  LotteryAlgorithm,
+  // LotteryAlgorithm,
   MobileApp,
   SortingAlgorithmImage,
 } from '../assets/images';
