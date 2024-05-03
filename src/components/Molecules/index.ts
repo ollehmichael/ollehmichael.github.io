@@ -4,6 +4,8 @@ import FilterButton from './FilterButton';
 import GitHubLink from './GitHubLink';
 import HeaderNavButton from './HeaderNavButton';
 import HomeNavButton from './HomeNavButton';
+import ImageCarouselBackButton from './ImageCarouselBackButton';
+import ImageCarouselNextButton from './ImageCarouselNextButton';
 import MyTimelineItem from './MyTimelineItem';
 import ProjectTag from './ProjectTag';
 import SlantedImage from './SlantedImage';
@@ -16,6 +18,8 @@ export {
   GitHubLink,
   HeaderNavButton,
   HomeNavButton,
+  ImageCarouselBackButton,
+  ImageCarouselNextButton,
   MyTimelineItem,
   ProjectTag,
   SlantedImage,

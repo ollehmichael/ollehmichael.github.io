@@ -1,7 +1,6 @@
 import {useState} from 'react';
 import {Box, IconButton} from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import {ImageCarouselBackButton, ImageCarouselNextButton} from '../Molecules';
 
 const ImageCarousel = ({
   projectTitle,
@@ -11,7 +10,6 @@ const ImageCarousel = ({
   images: string[];
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
-  // console.log(activeIndex);
 
   return (
     <Box sx={{position: 'relative'}}>
@@ -30,6 +28,7 @@ const ImageCarousel = ({
             boxSizing: 'border-box',
             padding: '2px',
             width: '100%',
+            border: '2px solid rgba(0, 0, 0, 0.7)',
           }}
           alt={`${projectTitle} Image ${activeIndex + 1}`}
           src={images[activeIndex]}
@@ -41,16 +40,13 @@ const ImageCarousel = ({
           display: 'flex',
           boxSizing: 'border-box',
           justifyContent: 'space-between',
-          color: 'white',
+          color: 'rgba(0, 0, 0, 0.7)',
         }}
       >
-        <IconButton
+        <ImageCarouselBackButton
           disabled={activeIndex == 0}
           onClick={() => setActiveIndex(activeIndex - 1)}
-          sx={{color: 'white'}}
-        >
-          <ArrowBackIcon fontSize={'small'} />
-        </IconButton>
+        />
         {images.map((item, index) => (
           <IconButton
             disabled={index == activeIndex}
@@ -63,21 +59,25 @@ const ImageCarousel = ({
             <Box
               component="img"
               sx={{
+                boxSizing: 'border-box',
                 width: '100%',
                 height: '100%',
+                padding: index == activeIndex ? '2px' : '4px',
+                border:
+                  index == activeIndex
+                    ? '2px solid rgba(0, 0, 0, 0.7)'
+                    : 'none',
+                transition: 'border 0.1s ease-in',
               }}
               alt={`${projectTitle} Image Option ${activeIndex + 1}`}
               src={item}
             />
           </IconButton>
         ))}
-        <IconButton
+        <ImageCarouselNextButton
           disabled={activeIndex + 1 == images.length}
           onClick={() => setActiveIndex(activeIndex + 1)}
-          sx={{color: 'white'}}
-        >
-          <ArrowForwardIcon fontSize={'small'} />
-        </IconButton>
+        />
       </Box>
     </Box>
   );

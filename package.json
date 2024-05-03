@@ -5,7 +5,6 @@
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.0",
     "@mui/lab": "^5.0.0-alpha.170",
     "@mui/material": "^5.14.18",
@@ -36,7 +35,8 @@
     "kill-server": "kill -9 $(lsof -ti:3000)",
     "build": "craco build",
     "test": "craco test",
-    "eject": "craco eject"
+    "eject": "craco eject",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -65,6 +65,7 @@
     "eslint": "^8.54.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
+    "gh-pages": "^6.1.1",
     "prettier": "^3.1.0"
   }
 }

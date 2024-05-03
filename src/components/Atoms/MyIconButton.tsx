@@ -40,9 +40,8 @@ const MyIconButton = ({
               color: color,
               borderRadius: '10px',
               background: backgroundColor,
-              fontFamily: 'Roclette Pro',
+              fontFamily: 'Lato Light',
               fontSize: fontSize,
-              letterSpacing: '1.5px',
               gap: '10px',
             }
       }

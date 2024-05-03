@@ -1,4 +1,5 @@
+import ImageCarousel from './ImageCarousel';
 import MyTimeline from './MyTimeline';
 import ProjectItem from './ProjectItem';
 
-export {MyTimeline, ProjectItem};
+export {ImageCarousel, MyTimeline, ProjectItem};

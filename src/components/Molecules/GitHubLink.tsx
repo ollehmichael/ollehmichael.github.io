@@ -4,10 +4,11 @@ import {MyIconButton} from '../Atoms';
 const GitHubLink = ({link}: {link: string}) => {
   return (
     <MyIconButton
-      backgroundColor={'rgba(255, 255, 255, 0.1)'}
-      color={'rgba(255, 255, 255)'}
+      backgroundColor={'rgba(0, 0, 0, 0.1)'}
+      color={'rgba(0, 0, 0, 0.7)'}
       onClick={() => window.open(link, '_blank')}
-      fontSize="16px"
+      hasBorder={true}
+      fontSize="1em"
     >
       <GitHubIcon />
       View my GitHub

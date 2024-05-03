@@ -17,7 +17,7 @@ import {
   ProjectWrapper,
 } from './ProjectDetailPage.styles';
 import {BackButton, GitHubLink, ProjectTag} from '../../components/Molecules';
-import ImageCarousel from '../../components/ImageCarousel';
+import {ImageCarousel} from '../../components/Organisms';
 
 export const ProjectDetailPage = () => {
   const {projectID} = useParams();
@@ -44,9 +44,6 @@ export const ProjectDetailPage = () => {
   return (
     <ProjectWrapper
       sx={{
-        background: showComponents
-          ? 'rgba(26, 41, 51, 0.7)'
-          : 'rgba(26, 41, 51, 0)',
         opacity: showComponents ? 1 : 0,
         transition: showComponents ? 'all 0.5s ease-in' : 'none',
       }}
@@ -60,7 +57,6 @@ export const ProjectDetailPage = () => {
         <ProjectHeader>
           <BackButton />
           <ProjectTitle>{projectDetails.title}</ProjectTitle>
-          <GitHubLink link={projectDetails.githubLink} />
         </ProjectHeader>
         <ProjectContentContainer>
           <ProjectImageWrapper>
@@ -75,11 +71,13 @@ export const ProjectDetailPage = () => {
                 return (
                   <ProjectTag
                     key={`${projectDetails.title} ${tag} stack`}
+                    hasBorder={true}
                     fontSize={'1em'}
                     tag={tag}
                   />
                 );
               })}
+              <GitHubLink link={projectDetails.githubLink} />
             </ProjectTagList>
             <ProjectDescription>
               {projectDetails.description}

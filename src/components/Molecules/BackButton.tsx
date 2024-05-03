@@ -13,7 +13,7 @@ const BackButton = () => {
         justifySelf: 'flex-start',
         borderRadius: 0,
         padding: 0,
-        color: 'white',
+        color: 'rgba(0, 0, 0, 0.7)',
       }}
     >
       <ArrowBackIosNewIcon />

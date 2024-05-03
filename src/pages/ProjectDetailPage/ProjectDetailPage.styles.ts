@@ -24,7 +24,7 @@ export const ProjectHeader = styled(Box)(() => ({
   boxSizing: 'border-box',
   gridTemplateColumns: '1fr 70% 1fr',
   width: '100%',
-  color: 'white',
+  color: 'rgba(0, 0, 0, 0.7)',
 }));
 
 export const ProjectTitle = styled(Box)(() => ({
@@ -32,7 +32,7 @@ export const ProjectTitle = styled(Box)(() => ({
   boxSizing: 'border-box',
   justifySelf: 'center',
   alignSelf: 'center',
-  fontFamily: 'Roclette Pro',
+  fontFamily: 'Raleway Bold',
   fontSize: 36,
 }));
 
@@ -58,7 +58,7 @@ export const ProjectDetailContainer = styled(Box)(() => ({
   boxSizing: 'border-box',
   width: '100%',
   height: '100%',
-  color: 'white',
+  color: 'rgba(0, 0, 0, 0.7)',
   gap: '20px',
 }));
 
@@ -67,15 +67,18 @@ export const ProjectTagList = styled(Box)(() => ({
   boxSizing: 'border-box',
   width: '100%',
   gap: '10px',
+  '& > :last-child': {
+    marginLeft: 'auto',
+  },
 }));
 
 export const ProjectDescription = styled(Box)(() => ({
   display: 'flex',
   boxSizing: 'border-box',
   width: '100%',
-  fontFamily: 'Roclette Pro Light',
-  fontSize: 18,
-  letterSpacing: '1.5px',
+  fontFamily: 'Raleway Regular',
+  fontSize: '1em',
+  lineHeight: '1.5em',
   whiteSpace: 'pre-line',
   textAlign: 'justify',
   textJustify: 'inter-word',
@@ -84,9 +87,9 @@ export const ProjectDescription = styled(Box)(() => ({
 export const ProjectTechStackList = styled(Box)(() => ({
   display: 'flex',
   boxSizing: 'border-box',
+  alignItems: 'center',
   width: '100%',
   gap: '5px',
-  fontFamily: 'Roclette Pro Light',
-  fontSize: 18,
-  letterSpacing: '1.5px',
+  fontFamily: 'Raleway Regular',
+  fontSize: '1em',
 }));

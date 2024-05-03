@@ -1,6 +1,14 @@
 import {MyIconButton} from '../Atoms';
 
-const ProjectTag = ({tag, fontSize}: {tag: string; fontSize: string}) => {
+const ProjectTag = ({
+  hasBorder = false,
+  tag,
+  fontSize,
+}: {
+  hasBorder?: boolean;
+  tag: string;
+  fontSize: string;
+}) => {
   const getTagColor = (tag: string) => {
     switch (tag) {
       case 'Frontend':
@@ -21,6 +29,7 @@ const ProjectTag = ({tag, fontSize}: {tag: string; fontSize: string}) => {
     <MyIconButton
       backgroundColor={getTagColor(tag)[1]}
       color={getTagColor(tag)[0]}
+      hasBorder={hasBorder}
       fontSize={fontSize}
     >
       {tag.toUpperCase()}
