@@ -1,0 +1,597 @@
+import AircraftComponentManagementHome from '@/public/projects/aircraft-component-management-home.png';
+import DigitalSignageCMS from '@/public/projects/digital-signage-cms.png';
+import DigitalSignageExitboardMultiple from '@/public/projects/digital-signage-exitboard-multiple.png';
+import DigitalSignageExitboardSingle from '@/public/projects/digital-signage-exitboard-single.png';
+import DigitalSignageNavappDetails from '@/public/projects/digital-signage-navapp-details.png';
+import DigitalSignageNavapp from '@/public/projects/digital-signage-navapp.png';
+import DigitalSignageStreetmap from '@/public/projects/digital-signage-streetmap.png';
+import ImpactTrackerSlide from '@/public/projects/impact-tracker-slide.png';
+import RenewableEnergyTradingDashboard from '@/public/projects/renewable-energy-trading-dashboard.png';
+import RenewableEnergyTradingInventory from '@/public/projects/renewable-energy-trading-inventory.png';
+import RenewableEnergyTradingNewDevice from '@/public/projects/renewable-energy-trading-new-device.png';
+import RenewableEnergyTradingWeChatDashboard from '@/public/projects/renewable-energy-trading-wechat-dashboard.png';
+import RenewableEnergyTradingWeChatLogin from '@/public/projects/renewable-energy-trading-wechat-login.png';
+import RenewableEnergyTradingWeChatTradeDetails from '@/public/projects/renewable-energy-trading-wechat-trade-details.png';
+import VipLoyaltySlide1 from '@/public/projects/vip-loyalty-slide-1.png';
+import VipLoyaltySlide2 from '@/public/projects/vip-loyalty-slide-2.png';
+import VipLoyaltySlide3 from '@/public/projects/vip-loyalty-slide-3.png';
+import VipLoyaltySlide4 from '@/public/projects/vip-loyalty-slide-4.png';
+import VipLoyaltySlide5 from '@/public/projects/vip-loyalty-slide-5.png';
+import VipLoyaltySlide6 from '@/public/projects/vip-loyalty-slide-6.png';
+import { StaticImageData } from 'next/image';
+
+export type Project = {
+  id: string;
+  title: string;
+  description: string;
+  fullDescription: string[];
+  date: string;
+  images: StaticImageData[];
+  domains: string[];
+  technologies: string[];
+  githubUrl: string;
+  liveUrl: string;
+  lessons: string[];
+  achievements: string[];
+  careerExperience?: string;
+};
+
+export const Projects: Project[] = [
+  // {
+  //   id: 'sorting-visualizer',
+  //   title: 'Sorting Algorithm Visualizer',
+  //   description:
+  //     'Interactive tool illustrating sorting algorithms visually, aiding the understanding of algorithmic processes',
+  //   fullDescription: [],
+  //   images: [],
+  //   date: '',
+  //   domains: ['Frontend', 'Data'],
+  //   technologies: ['React', 'Javascript', 'TypeScript'],
+  //   githubUrl: '',
+  //   liveUrl: '',
+  //   lessons: [],
+  //   achievements: [],
+  //   careerExperience: 'Senior Software Engineer @Tech Innovations Inc.',
+  // },
+  {
+    id: 'digital-signage',
+    title: 'Travel Information Digital Signage Ecosystem',
+    description:
+      'Developed and deployed multiple digital signage interfaces for efficient travel planning, pending official launch for a major public transport operator',
+    fullDescription: [
+      'When passengers needed better access to travel information, we built an ecosystem that transformed how they plan their journeys. Multiple digital signage interfaces were crafted for real-time information display, each optimized for clarity and speed. Behind the scenes, a headless CMS empowered business teams to manage content directly, eliminating bottlenecks. The real challenge came with the backend—we tore down the architecture, decoupled tangled dependencies, and optimized the cloud infrastructure. The result? Significant cost savings and rock-solid reliability. Through it all, Gen-e2 delivery methodology kept the momentum high.',
+    ],
+    images: [
+      DigitalSignageStreetmap,
+      DigitalSignageExitboardSingle,
+      DigitalSignageExitboardMultiple,
+      DigitalSignageCMS,
+      DigitalSignageNavapp,
+      DigitalSignageNavappDetails,
+    ],
+    date: 'Oct 2025',
+    domains: ['Frontend', 'Backend', 'DevSecOps'],
+    technologies: [
+      'React.js',
+      'TypeScript (Web)',
+      'TypeScript (Backend)',
+      'Next.js',
+      'Nest.js',
+      'Strapi',
+      'Playwright (Web)',
+      'Node.js',
+      'Jest (Web)',
+      'Docker',
+      'Azure Cloud',
+      'Azure DevOps',
+      'GitHub Copilot',
+      'Gen-e2 Methodology',
+      'Google Analytics',
+      'Google Tag Manager',
+    ],
+    githubUrl: '',
+    liveUrl: '',
+    lessons: [],
+    achievements: [
+      'Reduced HKD7000+ monthly cost along with eliminating 90% of data inconsistencies across multiple services',
+      'Reduced necessary manpower by 80%, while maintaining delivery velocity',
+      'Single-handedly managed all aspects of developing this system, including 3 frontend services, 1 backend service, 1 CMS, and cloud deployment',
+    ],
+    careerExperience: 'Software Engineer @PALO IT Hong Kong Limited',
+  },
+  {
+    id: 'supply-chain-management',
+    title: 'Supply Chain Management Mobile App',
+    description:
+      'Revamped mobile app for a luxury travel retail brand, empowering users to track inbound/outbound shipments and streamline labelling with enhanced operational efficiency',
+    fullDescription: [
+      'A luxury travel retail brand was drowning in operational complexity. Their supply chain app needed more than a refresh—it needed a complete overhaul. We introduced MVVM architecture to the Gen-e2 Delivery Model, laying a foundation for sustainable code quality. The mobile app was rebuilt from the ground up, giving users seamless tracking of shipments and streamlined labelling that actually worked. Along the way, we refactored the existing codebase with Express.js and TypeScript best practices, turning technical debt into a competitive advantage.',
+    ],
+    images: [],
+    date: 'May 2025',
+    domains: ['Mobile', 'Web', 'Backend', 'Cloud', 'DevOps'],
+    technologies: [
+      'React Native',
+      'Redux (Mobile)',
+      'Jest (Mobile)',
+      'GitHub Copilot',
+      'Express.js',
+      'TypeScript',
+      'MySQL',
+      'Docker',
+      'Alibaba ACK',
+      'GitHub Actions',
+      'Gen-e2 Methodology',
+    ],
+    githubUrl: '',
+    liveUrl: '',
+    lessons: [],
+    achievements: [
+      'Improved team productivity by 2x while refactoring existing code with best practices',
+      'Accelerated delivery time and reduced pull request turnaround by 50%',
+    ],
+    careerExperience: 'Software Engineer @PALO IT Hong Kong Limited',
+  },
+  {
+    id: 'renewable-energy-trading',
+    title: 'Renewable Energy Trading Platform',
+    description:
+      'Developed platform and admin panel for a global environmental trading firm to provide credit traders an efficient end-to-end process from onboarding clients to performing sales activities',
+    fullDescription: [
+      "Five separate services. Five different workflows. One frustrated trading team. For a global environmental trading firm, we consolidated the chaos into a unified platform that actually made sense. Credit traders got an end-to-end system—from onboarding new clients to closing sales—all in one place. But we didn't stop there. A WeChat Mini Program opened a new channel, giving 70%+ of customers instant access to their account highlights without the full platform complexity. Built on a monorepo with Atomic Design and secured with Microsoft Entra ID SSO, the platform balanced power with accessibility.",
+    ],
+    images: [
+      RenewableEnergyTradingDashboard,
+      RenewableEnergyTradingNewDevice,
+      RenewableEnergyTradingInventory,
+      RenewableEnergyTradingWeChatLogin,
+      RenewableEnergyTradingWeChatDashboard,
+      RenewableEnergyTradingWeChatTradeDetails,
+    ],
+    date: 'Mar 2025',
+    domains: ['Frontend', 'Backend', 'Mobile', 'Cloud', 'DevOps', 'Security'],
+    technologies: [
+      'React.js',
+      'TypeScript',
+      'Material UI',
+      'SWR',
+      'Node.js',
+      'Strapi',
+      'PostgreSQL',
+      'Jest',
+      'GitHub Actions',
+      'Azure Cloud',
+      'Azure DevOps',
+      'Google Analytics',
+      'Google Tag Manager',
+      'Docker',
+      'Gen-e2 Methodology',
+      'Taro.js',
+      'NutUI',
+      'Weixin DevTools',
+      'Weixin Developer Portal',
+      'Gen-e2 Methodology',
+    ],
+    githubUrl: '',
+    liveUrl: '',
+    lessons: [],
+    achievements: [
+      'Consolidated 5 separate services into a single platform to simplify operations',
+      'Provided 70%+ of customers easier access through WeChat Mini Program',
+    ],
+    careerExperience: 'Software Engineer @PALO IT Hong Kong Limited',
+  },
+  {
+    id: 'vip-loyalty',
+    title: 'VIP Loyalty Mobile App',
+    description:
+      'A loyalty mobile app for the VIPs of a major luxury fashion & beauty brand, launched in 2 major regional markets achieving over 7000+ monthly users across iOS and Android',
+    fullDescription: [
+      'Luxury customers expect perfection, and this VIP loyalty app had to deliver. Launched across 2 major regional markets on both Apple Store and Google Play Store, we improved the average monthly user count from 500+ to over 7000+, all seeking personalized rewards and exclusive experiences. Leading QA testing meant obsessing over every interaction on iOS and Android—no compromises, especially for a client operating at this large of a scale. Multiple dashboards tracked user activity and system health in real-time, catching issues before customers did. From pre-launch planning to post-release firefighting, the entire journey was a collaboration with Scrum Masters and Product Owners, ensuring every feature aligned with what truly mattered.',
+    ],
+    images: [
+      VipLoyaltySlide1,
+      VipLoyaltySlide2,
+      VipLoyaltySlide3,
+      VipLoyaltySlide4,
+      VipLoyaltySlide5,
+      VipLoyaltySlide6,
+    ],
+    date: '',
+    domains: ['Mobile', 'Frontend', 'Backend', 'Cloud', 'QA', 'Testing'],
+    technologies: [
+      'Flutter',
+      'Dart',
+      'BLoC',
+      'GetX',
+      'Salesforce Marketing Cloud',
+      'Azure DevOps',
+      'Azure Cloud',
+      'Datadog',
+      'Dynatrace',
+      'Postman',
+      'Gigya',
+      'Kakao Auth',
+      'Apple Auth',
+      'Appium',
+      'Agile Methodology',
+    ],
+    githubUrl: '',
+    liveUrl: '',
+    lessons: [],
+    achievements: [
+      'Launched in 2 major regional markets (KR, HKMO) for both Apple Store and Google Play Store',
+      'Achieved over 7000+ monthly users',
+    ],
+    careerExperience: 'Software Engineer @PALO IT Hong Kong Limited',
+  },
+  {
+    id: 'impact-tracker',
+    title: 'Impact Tracker',
+    description:
+      'Led frontend development and deployed the prototype of an all-in-one platform to accelerate the delivery of ESG orchestration, monitoring & reporting',
+    fullDescription: [
+      "Sustainability isn't just a buzzword—it's measurable, and organizations needed the tools to prove it. As a PALO IT's first product, we built an open-source ESG data platform from the ground up. Leading frontend development meant crafting interfaces that made complex environmental, social, and governance metrics actually understandable. The prototype went live on AWS infrastructure, powered by React.js, TypeScript, and Material UI, with Redux managing state and React-i18n enabling global reach. What started as an experiment became a toolkit for organizations committed to sustainable business practices.",
+    ],
+    images: [ImpactTrackerSlide],
+    date: '',
+    domains: ['Frontend', 'Data', 'Cloud', 'DevOps'],
+    technologies: [
+      'React.js',
+      'TypeScript',
+      'Material UI',
+      'Redux',
+      'AWS Cloud',
+      'Azure Cloud',
+      'GitHub Actions',
+      'Jira',
+      'Agile Methodology',
+    ],
+    githubUrl: '',
+    liveUrl: '',
+    lessons: [],
+    achievements: [
+      'Led frontend development for open-source ESG data platform',
+      'Successfully deployed prototype to production',
+      'Designed platform to assist organizations in measuring and managing ESG performance',
+    ],
+    careerExperience: 'Software Engineer @PALO IT Hong Kong Limited',
+  },
+  {
+    id: 'data-visualization-dashboard',
+    title: 'Data Pipeline and Visualization',
+    description:
+      'Designed and deployed an automated ETL pipeline for a major global wine & spirits group, providing real-time business insights for sales managers',
+    fullDescription: [
+      'Sales managers at a leading global wine and spirits brand were drowning in data but starving for insights. We built an automated ETL pipeline that transformed chaos into clarity. Real-time business intelligence became accessible at their fingertips, cutting processing time dramatically. The pipeline pulled data from Snowflake, Azure Data Lake, and Magento, then visualized it through Microsoft PowerBI dashboards that actually made sense. Behind the scenes, Azure Functions orchestrated the entire flow, and Agile under Scrum Principles kept the team moving fast.',
+    ],
+    images: [],
+    date: '',
+    domains: ['Data', 'Backend', 'Cloud', 'Data Visualization'],
+    technologies: [
+      'Python',
+      'Snowflake',
+      'Magento',
+      'Azure Cloud',
+      'Microsoft PowerBI',
+      'Agile Methodology',
+    ],
+    githubUrl: '',
+    liveUrl: '',
+    lessons: [],
+    achievements: [
+      'Achieved >60% reduction in data processing time',
+      'Enabled near real-time business insights for sales managers',
+      'Automated ETL pipeline for leading global wine & spirits brand',
+    ],
+    careerExperience: 'Software Engineer @PALO IT Hong Kong Limited',
+  },
+  {
+    id: 'aircraft-component-management',
+    title: 'Aircraft Component Management System',
+    description:
+      'Led frontend development of an award-winning platform for a specialized high-tech electronic component manufacturer, improving operational efficiency for international industrial operations',
+    fullDescription: [
+      "An international industrial company needed precision—tracking aircraft components isn't something you can afford to get wrong. Leading the frontend development for this award-winning platform meant building interfaces that made complex component management feel effortless. Every maintenance schedule, every compliance requirement, every part in the supply chain needed to be tracked with absolute accuracy. Built with React.js, TypeScript, and Material UI, powered by Redux for state management, the platform transformed operational efficiency for a specialized high-tech electronic component manufacturer. Agile under Scrum Principles kept the development sharp and responsive.",
+    ],
+    images: [AircraftComponentManagementHome],
+    date: '',
+    domains: ['Web', 'Backend', 'DevOps'],
+    technologies: [
+      'React.js',
+      'TypeScript',
+      'Material UI',
+      'Redux',
+      'Agile Methodology',
+      'Hyperledger Fabric',
+      'AWS Cloud',
+      'IPFS',
+    ],
+    githubUrl: '',
+    liveUrl: '',
+    lessons: [],
+    achievements: [
+      'Led frontend development of award-winning platform',
+      'Improved operational efficiency for international industrial company',
+      'Built comprehensive tracking system for aircraft components and compliance',
+    ],
+    careerExperience: 'Software Engineer @PALO IT Hong Kong Limited',
+  },
+  {
+    id: 'gen-e2-methodology',
+    title: 'Gen E2 Methodology Framework',
+    description:
+      'An innovative agile methodology framework combining entrepreneurial mindset with engineering excellence',
+    fullDescription: [],
+    images: [],
+    date: '',
+    domains: ['Others'],
+    technologies: ['Gen-e2 Methodology', 'Workshop Facilitation'],
+    githubUrl: '',
+    liveUrl: '',
+    lessons: [],
+    achievements: [],
+    careerExperience: 'Software Engineer @PALO IT Hong Kong Limited',
+  },
+  {
+    id: 'lnl-wechat-miniprogram',
+    title: 'WeChat Mini Program',
+    description:
+      'A feature-rich WeChat mini program delivering seamless mobile experiences within the WeChat ecosystem',
+    fullDescription: [],
+    images: [],
+    date: '',
+    domains: ['Others'],
+    technologies: ['WeChat Mini Program', 'Javascript'],
+    githubUrl: '',
+    liveUrl: '',
+    lessons: [],
+    achievements: [],
+    careerExperience: 'Software Engineer @PALO IT Hong Kong Limited',
+  },
+  {
+    id: 'lnl-gen-e2-methodology',
+    title: 'L&L Gen E2 Methodology Implementation',
+    description:
+      'Implementation of Gen E2 methodology for learning and development initiatives',
+    fullDescription: [],
+    images: [],
+    date: '',
+    domains: ['Others'],
+    technologies: ['Agile', 'Workshop Facilitation'],
+    githubUrl: '',
+    liveUrl: '',
+    lessons: [],
+    achievements: [],
+    careerExperience: 'Software Engineer @PALO IT Hong Kong Limited',
+  },
+  {
+    id: 'bcorp-certification',
+    title: 'B Corp Certification Initiative',
+    description:
+      'Leading the technical aspects of B Corporation certification, ensuring sustainable and ethical business practices',
+    fullDescription: [],
+    images: [],
+    date: '',
+    domains: ['Others'],
+    technologies: ['Process Optimization', 'Data Analysis'],
+    githubUrl: '',
+    liveUrl: '',
+    lessons: [],
+    achievements: [],
+    careerExperience: 'Software Engineer @PALO IT Hong Kong Limited',
+  },
+  {
+    id: 'pocket-chiro',
+    title: 'Pocket Chiro',
+    description:
+      'A mobile app connecting patients with personalized chiropractic programs, featuring AI-powered guidance and progress tracking',
+    fullDescription: [],
+    images: [],
+    date: '',
+    domains: ['Mobile', 'AI', 'Healthcare'],
+    technologies: ['React Native', 'AI/ML', 'Node.js'],
+    githubUrl: '',
+    liveUrl: '',
+    lessons: [],
+    achievements: [],
+    careerExperience: 'Full Stack Developer @Pocket Chiro (Self-Employed)',
+  },
+  {
+    id: 'influencer-marketplace',
+    title: 'Influencer Marketplace Platform',
+    description:
+      'A platform connecting early-stage content creators with brands for authentic promotion and monetization opportunities',
+    fullDescription: [],
+    images: [],
+    date: '',
+    domains: ['Frontend', 'Backend', 'Marketplace'],
+    technologies: ['React', 'Node.js', 'PostgreSQL'],
+    githubUrl: '',
+    liveUrl: '',
+    lessons: [],
+    achievements: [],
+    careerExperience:
+      'Full Stack Developer @Influencer Marketplace (Self-Employed)',
+  },
+  {
+    id: 'hong-kong-developer-network',
+    title: 'HK Developer Network',
+    description:
+      'A community platform for developers in Hong Kong to share knowledge, experiences, and elevate the tech industry reputation',
+    fullDescription: [],
+    images: [],
+    date: '',
+    domains: ['Others'],
+    technologies: ['Community Building', 'Event Management'],
+    githubUrl: '',
+    liveUrl: '',
+    lessons: [],
+    achievements: [],
+    careerExperience: 'Co-Host @HK Developer Network (Self-Organized)',
+  },
+  {
+    id: 'ecommerce-platform',
+    title: 'Ecomportal',
+    description:
+      'Revamped a job board for the eCommerce industry, resolving 85% of all identified bugs and enhancing performance by leveraging server-side rendering components',
+    fullDescription: [
+      'The eCommerce industry moves fast, and job seekers needed a platform that could keep up. Ecomportal was struggling with bugs and performance issues that frustrated users daily. We tore through the codebase, resolving 85% of all identified bugs while completely overhauling the user experience. Server-side rendering components transformed load times, making the platform feel instant. Built with Next.js, TypeScript, and Radix UI, backed by MongoDB and Algolia Search Engine for lightning-fast job searches. Stripe handled payments seamlessly, while Google Search Console optimized discoverability. What emerged was a job board that finally matched the speed of the industry it served.',
+    ],
+    images: [],
+    date: '',
+    domains: ['Frontend', 'Backend', 'E-commerce', 'SEO'],
+    technologies: [
+      'Next.js',
+      'TypeScript',
+      'Radix UI',
+      'MongoDB',
+      'Algolia Search Engine',
+      'Sanity',
+      'Stripe',
+      'Google Search Console',
+    ],
+    githubUrl: '',
+    liveUrl: '',
+    lessons: [],
+    achievements: [
+      'Resolved 85% of all identified bugs',
+      'Enhanced performance through server-side rendering components',
+      'Revamped complete job board for eCommerce industry',
+    ],
+    careerExperience: 'Full Stack Developer @Ecomportal (Self-Employed)',
+  },
+  {
+    id: 'cover-finance',
+    title: 'Cover Finance',
+    description:
+      'A DeFi platform exploring smart contracts, tokenomics, and decentralized financial solutions',
+    fullDescription: [],
+    images: [],
+    date: '',
+    domains: ['Blockchain', 'DeFi', 'Frontend'],
+    technologies: ['React', 'Solidity', 'Web3.js', 'Ethereum'],
+    githubUrl: '',
+    liveUrl: '',
+    lessons: [],
+    achievements: [],
+    careerExperience:
+      'Frontend Lead / Founding Member @Cover Finance (Self-Employed)',
+  },
+  {
+    id: 'project-humankind-nft',
+    title: 'Project Humankind NFT',
+    description:
+      'An NFT collection promoting unity and kindness across all backgrounds with the slogan "Be human, be kind"',
+    fullDescription: [],
+    images: [],
+    date: '',
+    domains: ['Blockchain', 'NFT', 'Frontend'],
+    technologies: ['React', 'Solidity', 'Web3.js', 'IPFS'],
+    githubUrl: '',
+    liveUrl: '',
+    lessons: [],
+    achievements: [],
+    careerExperience:
+      'Tech Lead / Founding Member @Project Humankind NFT (Self-Employed)',
+  },
+  {
+    id: 'sketch-basketball-website',
+    title: 'Sketch Basketball Website',
+    description:
+      'A website and admin panel for managing basketball league operations, schedules, and player information',
+    fullDescription: [],
+    images: [],
+    date: '',
+    domains: ['Frontend', 'Backend'],
+    technologies: ['React', 'Node.js', 'TypeScript'],
+    githubUrl: '',
+    liveUrl: '',
+    lessons: [],
+    achievements: [],
+    careerExperience: 'Frontend Lead @Sketch Basketball Limited',
+  },
+  {
+    id: 'emsd-energy-management',
+    title: 'EMSD Energy Management System',
+    description:
+      'An energy management system for monitoring and optimizing building energy consumption and efficiency',
+    fullDescription: [],
+    images: [],
+    date: '',
+    domains: ['Data', 'IoT', 'Frontend'],
+    technologies: ['React', 'Python', 'IoT Sensors'],
+    githubUrl: '',
+    liveUrl: '',
+    lessons: [],
+    achievements: [],
+    careerExperience: 'Junior Software Developer @Dayta AI Limited',
+  },
+  {
+    id: 'cyclops-dashboard',
+    title: 'Cyclops Dashboard',
+    description:
+      'An advanced monitoring and analytics dashboard providing real-time insights and system health metrics',
+    fullDescription: [],
+    images: [],
+    date: '',
+    domains: ['Frontend', 'Data'],
+    technologies: ['React', 'Python', 'Data Visualization'],
+    githubUrl: '',
+    liveUrl: '',
+    lessons: [],
+    achievements: [],
+    careerExperience: 'Junior Software Developer @Dayta AI Limited',
+  },
+  {
+    id: 'comic-books',
+    title: 'Fairy Tales Retold',
+    description:
+      'A series of comic books teaching fundamental programming concepts to children ages 5-12 through reimagined fairy tales',
+    fullDescription: [],
+    images: [],
+    date: '',
+    domains: ['Education', 'Content Creation'],
+    technologies: ['Storytelling', 'Educational Design'],
+    githubUrl: '',
+    liveUrl: '',
+    lessons: [],
+    achievements: [],
+    careerExperience: 'Author (Almost) @Fairy Tales Retold (Self-Employed)',
+  },
+  {
+    id: 'portfolio-website-v2',
+    title: 'My Own Portfolio Website - Version 2.0',
+    description:
+      'A personal portfolio website showcasing who I am as a person, and as a software engineer',
+    fullDescription: [''],
+    images: [],
+    date: '',
+    domains: ['Frontend'],
+    technologies: ['React', 'TypeScript', 'Next.js'],
+    githubUrl: '',
+    liveUrl: 'https://ollehmichael.github.io',
+    lessons: [],
+    achievements: [
+      'Designed and developed entirely by AI, using Gen-e2 Delivery Model',
+      'Finished refactoring from v1.0 to v2.0 in 20 hours',
+    ],
+    careerExperience: 'My Project',
+  },
+  {
+    id: 'portfolio-website-v1',
+    title: 'My Own Portfolio Website - Version 1.0',
+    description:
+      'A personal portfolio website showcasing who I am as a person, and as a software engineer',
+    fullDescription: [''],
+    images: [],
+    date: '',
+    domains: ['Frontend'],
+    technologies: ['React', 'TypeScript', 'Next.js'],
+    githubUrl: '',
+    liveUrl: '',
+    lessons: [],
+    achievements: ['Developed the whole website in 2 full days'],
+    careerExperience: 'My Project',
+  },
+];
