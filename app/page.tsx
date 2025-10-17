@@ -1,5 +1,5 @@
-import Homepage from '@/components/templates/home';
+import HomeView from '@/components/templates/home';
 
 export default function Page() {
-  return <Homepage />;
+  return <HomeView />;
 }

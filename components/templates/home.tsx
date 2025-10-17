@@ -2,18 +2,18 @@ import { SocialLinks } from '@/components/molecules/social-links';
 import Link from 'next/link';
 import TextTransformer from '../molecules/text-transformer';
 
-export default function Homepage() {
+export default function HomeView() {
   const nameList = ['MICHAEL HAN', 'BYONG CHEOL HAN', '한병철', '韩秉澈'];
 
   return (
     <main className="min-h-screen">
-      <section className="relative px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-        <div className="max-w-4xl w-full mx-auto">
+      <section className="relative px-4 py-12 sm:px-6 md:py-20 lg:px-8">
+        <div className="mx-auto w-full max-w-4xl">
           {/* Name */}
           <TextTransformer texts={nameList} />
 
-          <div className="space-y-8 animate-fade-in-delay-1 max-w-3xl mx-auto">
-            <div className="space-y-6 text-base md:text-lg leading-relaxed text-muted-foreground">
+          <div className="animate-fade-in-delay-1 mx-auto max-w-3xl space-y-8">
+            <div className="text-muted-foreground space-y-6 text-base leading-relaxed md:text-lg">
               <p>
                 I'm a man of many identities - a{' '}
                 <span className="text-foreground font-medium">developer</span>,
@@ -50,15 +50,15 @@ export default function Homepage() {
               </p>
             </div>
 
-            <blockquote className="border-l-4 border-primary pl-6 py-4">
-              <p className="text-lg md:text-xl font-medium text-foreground leading-relaxed">
+            <blockquote className="border-primary border-l-4 py-4 pl-6">
+              <p className="text-foreground text-lg leading-relaxed font-medium md:text-xl">
                 If you're aligned on the{' '}
                 <span className="text-destructive font-bold">why</span>, nothing
                 can stop your team.
               </p>
             </blockquote>
 
-            <div className="space-y-6 text-base md:text-lg leading-relaxed text-muted-foreground">
+            <div className="text-muted-foreground space-y-6 text-base leading-relaxed md:text-lg">
               <p>
                 I thrive on delivering exceptional products that stand out for
                 their quality and innovation, all while fostering a
@@ -71,17 +71,17 @@ export default function Homepage() {
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-4">
+            <div className="flex flex-col items-start gap-6 pt-4 sm:flex-row sm:items-center">
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/projects"
-                  className="inline-flex items-center justify-center px-8 py-3 text-base font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center justify-center rounded-md px-8 py-3 text-base font-medium transition-colors"
                 >
                   View Projects
                 </Link>
                 <Link
                   href="/career"
-                  className="inline-flex items-center justify-center px-8 py-3 text-base font-medium rounded-md border border-primary text-primary hover:bg-primary/10 transition-colors"
+                  className="border-primary text-primary hover:bg-primary/10 inline-flex items-center justify-center rounded-md border px-8 py-3 text-base font-medium transition-colors"
                 >
                   View Career Journey
                 </Link>
