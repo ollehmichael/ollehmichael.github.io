@@ -1,46 +1,64 @@
 ---
-applyTo: 'src/**'
+applyTo: '**'
 ---
 
 # Frontend Development Workflow Instructions
 
 ## Persona & Expertise
 
-When working on the `src` (React frontend), GitHub Copilot assumes the persona of:
+When working on the frontend (Next.js App Router), GitHub Copilot assumes the persona of:
 
-**A Senior React/TypeScript Expert** with:
+**A Senior Next.js/React/TypeScript Expert** with:
 
-- Extensive experience with React 19 and Create React App
-- Deep understanding of TypeScript, Material-UI (MUI), and Emotion/Styled Components
+- Extensive experience with Next.js 15 (App Router) and React 19
+- Deep understanding of TypeScript, shadcn/ui, Radix UI, and Tailwind CSS
 - Mastery of Atomic Design principles and component composition
 - Commitment to accessibility, performance, and modern best practices
-- Expertise in React Router, Redux state management, and MUI theming
+- Expertise in Next.js routing, Server/Client Components, and responsive design
 
 ## Primary Reference Documents
 
 **ALWAYS consult these documents before proposing changes:**
 
-1. **Atomic Design Principles**
-   - Follow the three-layer Atomic Design approach (Atoms → Molecules → Organisms)
-   - Current component structure in `src/components/`:
-     - `Atoms/` - Basic UI elements (buttons, inputs, etc.)
-     - `Molecules/` - Simple combinations (ProjectTag, GitHubLink, etc.)
-     - `Organisms/` - Complex sections (ProjectItem, ImageCarousel, MyTimeline, etc.)
-   - Page-level components live directly in `src/pages/[PageName]/`
+1. **Atomic Design Component Architecture** (`atomic-components.instructions.md`)
+   - **Read this file for ALL component-related decisions**
+   - Atomic Design methodology (Atoms → Molecules → Organisms → Templates → Pages)
+   - Component placement decision tree
+   - Reusability rules and best practices
+   - Project-specific component structure
+   - Single Responsibility Principle
+   - Content-aware design patterns
 
-2. **React Documentation (via Context7)**
-   - Use `mcp_context7` tools to fetch latest React 19 best practices
-   - Reference hooks, composition patterns, and performance optimization
-   - Check modern React patterns and error boundaries
+2. **Next.js App Router Architecture** (`app-router.instructions.md`)
+   - **Read this file for ALL routing and navigation decisions**
+   - File-based routing structure and special files
+   - Server vs Client Components decision criteria
+   - Navigation patterns (Link, useRouter, redirect)
+   - Data fetching strategies (Server Components, SWR, useEffect)
+   - Route parameters and dynamic routes
+   - Metadata API and SEO configuration
+   - Error handling and loading states
+   - Performance optimizations (prefetching, streaming)
 
-3. **Material-UI Documentation (via Context7)**
-   - Use `mcp_context7` for MUI component API and styling patterns
-   - Reference theming, sx prop usage, and responsive design
-   - Check accessibility features and customization options
+3. **Next.js Documentation (via Context7)**
+   - Use `mcp_context7` tools to fetch latest Next.js 15 best practices
+   - Reference advanced patterns and edge cases
+   - Check image optimization and performance optimization
 
-4. **React Router Documentation (via Context7)**
-   - Use `mcp_context7` for routing patterns and navigation
-   - Reference hooks like useNavigate, useParams, useLocation
+4. **React Documentation (via Context7)**
+   - Use `mcp_context7` for React 19 best practices
+   - Reference hooks, composition patterns, and error boundaries
+   - Check modern React patterns and Server Components
+
+5. **shadcn/ui Documentation (via Context7)**
+   - Use `mcp_context7` for shadcn/ui component API and patterns
+   - Reference Radix UI primitives and customization
+   - Check accessibility features and component composition
+
+6. **Tailwind CSS Documentation (via Context7)**
+   - Use `mcp_context7` for Tailwind utility classes and patterns
+   - Reference responsive design, theming, and customization
+   - Check dark mode implementation and best practices
 
 ## Core Development Protocol
 
@@ -49,15 +67,16 @@ When working on the `src` (React frontend), GitHub Copilot assumes the persona o
 **ALWAYS evaluate all phases in order** when implementing features:
 
 1. **Design** → Define component requirements and hierarchy
-2. **Atoms** → Identify or create atomic components (MUI or custom)
+2. **Atoms** → Identify or create atomic components (shadcn/ui or custom)
 3. **Molecules** → Build or reuse molecule combinations
 4. **Organisms** → Compose complex UI sections
-5. **Data** → Implement data fetching and API calls
-6. **State** → Add component state (useState) or Redux store
-7. **Styling** → Apply MUI sx props, theme, or styled components
-8. **Routing** → Configure React Router routes if needed
-9. **Tests** → Write component and integration tests
-10. **Verify** → Test in browser, check accessibility, update docs
+5. **Templates** → Create page-level layouts
+6. **Data** → Implement data fetching (Server Components, client-side, etc.)
+7. **State** → Add component state (useState, useReducer, or context)
+8. **Styling** → Apply Tailwind utility classes and custom CSS
+9. **Routing** → Configure Next.js App Router routes if needed
+10. **Tests** → Write component and integration tests
+11. **Verify** → Test in browser, check accessibility, update docs
 
 **Phase Evaluation Protocol:**
 
@@ -73,22 +92,23 @@ Task: Add a project search feature to the projects page
 
 Phase Evaluation:
 1. Design - REQUIRED (need to plan search UX)
-2. Atoms - SKIP (MUI TextField and Button already exist)
+2. Atoms - SKIP (shadcn/ui Input and Button already exist)
 3. Molecules - CHECK (need to create SearchBar molecule)
-4. Organisms - NOT NEEDED (search is part of existing ProjectListPage)
-5. Data - REQUIRED (need to implement search filter logic)
-6. State - REQUIRED (search term state, debouncing)
-7. Styling - CHECK (ensure responsive design with MUI sx props)
-8. Routing - NOT NEEDED (no route changes)
-9. Tests - REQUIRED (test search functionality)
-10. Verify - REQUIRED (manual testing, accessibility check)
+4. Organisms - NOT NEEDED (search is part of existing projects template)
+5. Templates - CHECK (update projects template)
+6. Data - REQUIRED (need to implement search filter logic)
+7. State - REQUIRED (search term state, debouncing)
+8. Styling - CHECK (ensure responsive design with Tailwind)
+9. Routing - NOT NEEDED (no route changes)
+10. Tests - REQUIRED (test search functionality)
+11. Verify - REQUIRED (manual testing, accessibility check)
 
 My Plan:
-1. Create SearchBar molecule using MUI TextField and IconButton
-2. Update ProjectListPage to include search functionality
+1. Create SearchBar molecule using shadcn/ui Input component
+2. Update Projects template to include search functionality
 3. Implement client-side search filter logic
-4. Add debounced search state management
-5. Style with MUI theme and responsive sx props
+4. Add debounced search state management with useState
+5. Style with Tailwind utilities and responsive classes
 6. Write tests for search behavior
 7. Verify search works and is accessible
 
@@ -97,171 +117,15 @@ Do you approve of this plan?
 
 This ensures thorough consideration while maintaining flexibility for the task at hand.
 
-### React Router Best Practices
-
-**Routing Configuration:**
-
-```typescript
-// App.tsx - Main routing setup
-import { Routes, Route, Navigate } from 'react-router-dom';
-
-function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/about-me" element={<AboutMePage />} />
-      <Route path="/projects" element={<ProjectListPage />} />
-      <Route path="/projects/:projectID" element={<ProjectDetailPage />} />
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
-  );
-}
-```
-
-**Navigation Patterns:**
-
-```typescript
-// Using useNavigate hook
-import { useNavigate } from 'react-router-dom';
-
-export function ProjectItem({ project }) {
-  const navigate = useNavigate();
-
-  return (
-    <Card onClick={() => navigate(`/projects/${project.projectID}`)}>
-      {/* ... */}
-    </Card>
-  );
-}
-
-// Using Link component
-import { Link } from 'react-router-dom';
-
-export function NavButton() {
-  return (
-    <Button component={Link} to="/projects">
-      View Projects
-    </Button>
-  );
-}
-
-// Accessing route parameters
-import { useParams } from 'react-router-dom';
-
-export function ProjectDetailPage() {
-  const { projectID } = useParams<{ projectID: string }>();
-  // Use projectID to fetch project data
-}
-```
-
-**Data Fetching in React Components:**
-
-```typescript
-// Fetch data in useEffect
-import { useState, useEffect } from 'react';
-
-export function ProjectListPage() {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchProjects() {
-      try {
-        const response = await fetch('/api/projects');
-        const data = await response.json();
-        setProjects(data);
-      } catch (error) {
-        console.error('Failed to fetch projects:', error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchProjects();
-  }, []);
-
-  if (loading) return <CircularProgress />;
-
-  return <ProjectList projects={projects} />;
-}
-```
-
-### Atomic Design Component Structure
-
-### Atomic Design Component Structure
-
-**Follow the three-layer hierarchy:**
-
-```
-Atoms (MUI components + custom)
-  ↓
-Molecules (atom combinations)
-  ↓
-Organisms (complex sections)
-  ↓
-Pages (routes + page-specific components)
-```
-
-**Module Structure:**
-
-```
-src/
-  components/
-    Atoms/              # MUI-based + custom atomic components
-      MyIconButton.tsx
-      Blockquote.tsx
-      index.ts
-
-    Molecules/          # Reusable combinations (2+ pages)
-      ProjectTag.tsx
-      GitHubLink.tsx
-      BackButton.tsx
-      index.ts
-
-    Organisms/          # Complex sections (2+ pages)
-      ProjectItem.tsx
-      ImageCarousel.tsx
-      MyTimeline.tsx
-      index.ts
-
-  pages/
-    HomePage/
-      HomePage.tsx
-      HomePage.styles.ts  # Page-specific styled components
-
-    ProjectListPage/
-      ProjectListPage.tsx
-      ProjectListPage.styles.ts
-
-    ProjectDetailPage/
-      ProjectDetailPage.tsx
-      ProjectDetailPage.styles.ts
-
-  theme/
-    theme.ts            # MUI theme configuration
-    type.ts             # Theme type definitions
-```
-
-**Component Placement Decision Tree:**
-
-1. **Is it a basic UI element?** → `components/Atoms/`
-2. **Does it combine 2-5 atoms?** → Check reusability:
-   - Reused 2+ times → `components/Molecules/`
-   - Used once → Keep in page component
-3. **Is it a complex UI section?** → Check reusability:
-   - Reused across pages → `components/Organisms/`
-   - Page-specific → Keep in page component or create sub-component
-
-### TypeScript Standards
+## TypeScript Standards
 
 **Use explicit types everywhere:**
 
 ```typescript
 // Define prop interfaces
-export interface ProjectItemProps {
+export interface ProjectCardProps {
   index: number;
-  project: ProjectItemType;
-  style?: SxProps<Theme>;
+  project: Project;
 }
 
 // Type function parameters
@@ -270,10 +134,10 @@ export function formatDate(date: Date): string {
 }
 
 // Type hooks
-const [projects, setProjects] = useState<ProjectItemType[]>([]);
+const [projects, setProjects] = useState<Project[]>([]);
 
 // Type async functions
-async function getProjects(): Promise<ProjectItemType[]> {
+async function getProjects(): Promise<Project[]> {
   // ...
 }
 ```
@@ -281,11 +145,17 @@ async function getProjects(): Promise<ProjectItemType[]> {
 **Use discriminated unions for variants:**
 
 ```typescript
-type ButtonVariant = 'primary' | 'secondary' | 'outlined' | 'text';
+type ButtonVariant =
+  | 'default'
+  | 'destructive'
+  | 'outline'
+  | 'secondary'
+  | 'ghost'
+  | 'link';
 
-interface MyButtonProps {
+interface ButtonProps {
   variant?: ButtonVariant;
-  size?: 'small' | 'medium' | 'large';
+  size?: 'default' | 'sm' | 'lg' | 'icon';
   // ...
 }
 ```
@@ -293,222 +163,241 @@ interface MyButtonProps {
 **Export types for reuse:**
 
 ```typescript
-// type/ProjectItem.tsx
-export interface ProjectItemType {
-  projectID: string;
+// lib/projects.ts
+export interface Project {
+  id: string;
   title: string;
-  briefDescription: string;
-  imageList: string[];
-  tagList: string[];
+  description: string;
+  images: string[];
+  domains: string[];
+  technologies: string[];
   // ...
 }
 
 // Use in components
-import {ProjectItemType} from '@/type/ProjectItem';
+import { Project } from '@/lib/projects';
 ```
 
 ### Styling Standards
 
-**Material-UI (MUI) Best Practices:**
+**Tailwind CSS Best Practices:**
 
 ```typescript
-// Use sx prop for inline styling
-<Box sx={{
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 2,
-  padding: 3,
-  borderRadius: 2,
-  backgroundColor: 'background.paper',
-}}>
+// Use Tailwind utility classes
+<div className="flex flex-col gap-2 p-3 rounded-lg bg-card">
+  <h2 className="text-xl font-semibold text-foreground">
+    {title}
+  </h2>
+</div>
 
-// Use theme values for consistency
-<Typography sx={{
-  color: 'primary.main',
-  fontFamily: 'Raleway Bold',
-  fontSize: '1.2rem',
-}}>
+// Responsive design with breakpoints
+<div className="w-full sm:w-80 md:w-60 p-2 md:p-4">
+  <Card className="hover:shadow-lg transition-shadow">
+    {/* ... */}
+  </Card>
+</div>
 
-// Responsive design with sx breakpoints
-<Card sx={{
-  width: { xs: '100%', sm: '80%', md: '60%' },
-  padding: { xs: 2, md: 4 },
-}}>
+// Conditional classes with cn() utility
+import { cn } from '@/lib/utils';
 
-// Hover and state styles
-<CardMedia sx={{
-  height: 140,
-  filter: 'grayScale(100%)',
-  '&:hover': {
-    filter: 'grayScale(0%)',
-    transition: 'all 0.5s ease-in',
-  },
-}} />
+<button
+  className={cn(
+    "rounded-lg border px-4 py-2 transition-colors",
+    isActive && "bg-primary text-primary-foreground",
+    disabled && "opacity-50 cursor-not-allowed"
+  )}
+>
+
+// Group hover states
+<Link
+  href={`/projects/${id}`}
+  className="group block rounded-lg border hover:border-primary"
+>
+  <img className="opacity-75 group-hover:opacity-100" />
+</Link>
+
+// Dark mode with CSS variables
+<div className="bg-background text-foreground border-border">
+  {/* Automatically adapts to dark/light mode */}
+</div>
 ```
 
-**Use Styled Components for complex/reusable styles:**
+**shadcn/ui Component Usage:**
 
 ```typescript
-import styled from '@emotion/styled';
-import {Box} from '@mui/material';
-
-export const StyledContainer = styled(Box)(({theme}) => ({
-  display: 'flex',
-  flexDirection: 'column',
-  padding: theme.spacing(3),
-  backgroundColor: theme.palette.background.default,
-
-  [theme.breakpoints.down('md')]: {
-    padding: theme.spacing(2),
-  },
-}));
-```
-
-**MUI Theme Customization:**
-
-```typescript
-// theme/theme.ts
-import {createTheme} from '@mui/material';
-
-export const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#0D9E7A',
-      light: '#84D0BA',
-      dark: '#005436',
-    },
-    secondary: {
-      main: '#FFAF3B',
-      light: '#FFDDAC',
-    },
-  },
-  typography: {
-    h1: {
-      fontFamily: 'Oswald-Bold',
-      fontSize: '90px',
-    },
-    body1: {
-      fontFamily: 'Oswald-Regular',
-      fontSize: '2em',
-    },
-  },
-});
-```
-
-**Component Styling Patterns:**
-
-```typescript
-// Import MUI components
-import { Card, CardContent, Typography, Box } from '@mui/material';
+// Import and use shadcn/ui components
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <Card raised sx={{ maxWidth: 345 }}>
-      <CardContent sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 1,
-      }}>
-        <Typography variant="h5" component="h2">
-          {project.title}
-        </Typography>
-        <Box sx={{
-          display: 'flex',
-          gap: 1,
-          flexWrap: 'wrap',
-        }}>
-          {project.tags.map(tag => (
-            <Chip key={tag} label={tag} />
+    <Card className="hover:shadow-lg transition-shadow">
+      <CardHeader>
+        <CardTitle>{project.title}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="flex flex-wrap gap-2">
+          {project.technologies.map(tech => (
+            <Badge key={tech} variant="secondary">
+              {tech}
+            </Badge>
           ))}
-        </Box>
+        </div>
+        <Button variant="outline" className="mt-4">
+          View Details
+        </Button>
       </CardContent>
     </Card>
   );
 }
 ```
 
-### Redux State Management
+**Tailwind Configuration with CSS Variables:**
 
-**Use Redux for global state management:**
+```css
+/* app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-```typescript
-// redux/store.ts
-import {configureStore} from '@reduxjs/toolkit';
-import projectsReducer from './slices/projectsSlice';
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    /* ... */
+  }
 
-export const store = configureStore({
-  reducer: {
-    projects: projectsReducer,
-  },
-});
-
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
-```
-
-**Create Redux slices:**
-
-```typescript
-// redux/slices/projectsSlice.ts
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {ProjectItemType} from '../../type/ProjectItem';
-
-interface ProjectsState {
-  items: ProjectItemType[];
-  selectedTags: string[];
-  loading: boolean;
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    /* ... */
+  }
 }
-
-const initialState: ProjectsState = {
-  items: [],
-  selectedTags: [],
-  loading: false,
-};
-
-export const projectsSlice = createSlice({
-  name: 'projects',
-  initialState,
-  reducers: {
-    setProjects: (state, action: PayloadAction<ProjectItemType[]>) => {
-      state.items = action.payload;
-    },
-    toggleTag: (state, action: PayloadAction<string>) => {
-      const tag = action.payload;
-      if (state.selectedTags.includes(tag)) {
-        state.selectedTags = state.selectedTags.filter((t) => t !== tag);
-      } else {
-        state.selectedTags.push(tag);
-      }
-    },
-  },
-});
-
-export const {setProjects, toggleTag} = projectsSlice.actions;
-export default projectsSlice.reducer;
 ```
 
-**Use Redux hooks in components:**
+**Custom Animations:**
 
 ```typescript
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../redux/store';
-import { setProjects } from '../../redux/slices/projectsSlice';
+// Use Tailwind animation classes
+<div className="animate-fade-in opacity-0">
+  {/* Fades in */}
+</div>
 
-export function ProjectListPage() {
-  const dispatch = useDispatch();
-  const projects = useSelector((state: RootState) => state.projects.items);
-  const selectedTags = useSelector((state: RootState) => state.projects.selectedTags);
+// Staggered animations
+<div className="animate-fade-in-delay-1">First</div>
+<div className="animate-fade-in-delay-2">Second</div>
+<div className="animate-fade-in-delay-3">Third</div>
+```
 
-  useEffect(() => {
-    // Fetch and set projects
-    fetchProjects().then(data => {
-      dispatch(setProjects(data));
-    });
-  }, [dispatch]);
+### State Management
+
+**Use React hooks for local state:**
+
+```typescript
+// useState for simple state
+'use client';
+import { useState } from 'react';
+
+export function ProjectFilter() {
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+
+  const toggleTag = (tag: string) => {
+    setSelectedTags(prev =>
+      prev.includes(tag)
+        ? prev.filter(t => t !== tag)
+        : [...prev, tag]
+    );
+  };
 
   return (
     // Component JSX
   );
+}
+
+// useReducer for complex state
+import { useReducer } from 'react';
+
+type State = {
+  filters: string[];
+  sortBy: 'date' | 'title';
+  isLoading: boolean;
+};
+
+type Action =
+  | { type: 'ADD_FILTER'; payload: string }
+  | { type: 'REMOVE_FILTER'; payload: string }
+  | { type: 'SET_SORT'; payload: 'date' | 'title' }
+  | { type: 'SET_LOADING'; payload: boolean };
+
+function reducer(state: State, action: Action): State {
+  switch (action.type) {
+    case 'ADD_FILTER':
+      return { ...state, filters: [...state.filters, action.payload] };
+    case 'REMOVE_FILTER':
+      return { ...state, filters: state.filters.filter(f => f !== action.payload) };
+    case 'SET_SORT':
+      return { ...state, sortBy: action.payload };
+    case 'SET_LOADING':
+      return { ...state, isLoading: action.payload };
+    default:
+      return state;
+  }
+}
+
+export function ProjectList() {
+  const [state, dispatch] = useReducer(reducer, {
+    filters: [],
+    sortBy: 'date',
+    isLoading: false,
+  });
+
+  // Use state and dispatch
+}
+```
+
+**Use React Context for shared state:**
+
+```typescript
+// contexts/FilterContext.tsx
+'use client';
+import { createContext, useContext, useState } from 'react';
+
+interface FilterContextType {
+  selectedTags: string[];
+  toggleTag: (tag: string) => void;
+}
+
+const FilterContext = createContext<FilterContextType | undefined>(undefined);
+
+export function FilterProvider({ children }: { children: React.ReactNode }) {
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+
+  const toggleTag = (tag: string) => {
+    setSelectedTags(prev =>
+      prev.includes(tag)
+        ? prev.filter(t => t !== tag)
+        : [...prev, tag]
+    );
+  };
+
+  return (
+    <FilterContext.Provider value={{ selectedTags, toggleTag }}>
+      {children}
+    </FilterContext.Provider>
+  );
+}
+
+export function useFilter() {
+  const context = useContext(FilterContext);
+  if (!context) {
+    throw new Error('useFilter must be used within FilterProvider');
+  }
+  return context;
 }
 ```
 
@@ -517,48 +406,64 @@ export function ProjectListPage() {
 **Component Testing:**
 
 ```typescript
-// components/Molecules/ProjectTag.test.tsx
+// components/molecules/project-card.test.tsx
 import { render, screen } from '@testing-library/react';
-import ProjectTag from './ProjectTag';
+import { ProjectCard } from './project-card';
 
-describe('ProjectTag', () => {
-  it('renders tag with correct text', () => {
-    render(<ProjectTag tag="Frontend" fontSize="1em" />);
+describe('ProjectCard', () => {
+  const mockProject = {
+    id: 'test-project',
+    title: 'Test Project',
+    description: 'Test description',
+    images: ['/test.jpg'],
+    domains: ['Frontend'],
+    technologies: ['React', 'TypeScript'],
+  };
 
-    expect(screen.getByText('FRONTEND')).toBeInTheDocument();
+  it('renders project title', () => {
+    render(<ProjectCard index={0} project={mockProject} />);
+    expect(screen.getByText('Test Project')).toBeInTheDocument();
   });
 
-  it('applies correct color based on tag type', () => {
-    const { container } = render(
-      <ProjectTag tag="Backend" fontSize="1em" />
-    );
+  it('renders project technologies as badges', () => {
+    render(<ProjectCard index={0} project={mockProject} />);
+    expect(screen.getByText('React')).toBeInTheDocument();
+    expect(screen.getByText('TypeScript')).toBeInTheDocument();
+  });
 
-    const button = container.querySelector('button');
-    expect(button).toHaveStyle({
-      color: 'rgba(255, 203, 50)',
-    });
+  it('links to project detail page', () => {
+    const { container } = render(<ProjectCard index={0} project={mockProject} />);
+    const link = container.querySelector('a');
+    expect(link).toHaveAttribute('href', '/projects/test-project');
   });
 });
 ```
 
-**Testing with MUI Theme:**
+**Testing with Next.js:**
 
 ```typescript
 import { render } from '@testing-library/react';
-import { ThemeProvider } from '@mui/material';
-import { theme } from '../../theme/theme';
 
-function renderWithTheme(component: React.ReactElement) {
-  return render(
-    <ThemeProvider theme={theme}>
-      {component}
-    </ThemeProvider>
-  );
-}
+// Mock Next.js router
+jest.mock('next/navigation', () => ({
+  useRouter: () => ({
+    push: jest.fn(),
+    back: jest.fn(),
+  }),
+  usePathname: () => '/',
+}));
+
+// Mock Next.js Image component
+jest.mock('next/image', () => ({
+  __esModule: true,
+  default: (props: any) => {
+    return <img {...props} />;
+  },
+}));
 
 describe('MyComponent', () => {
-  it('renders with theme', () => {
-    renderWithTheme(<MyComponent />);
+  it('renders correctly', () => {
+    render(<MyComponent />);
     // assertions
   });
 });
@@ -569,7 +474,8 @@ describe('MyComponent', () => {
 - **Atoms**: Test variants, disabled states, accessibility
 - **Molecules**: Test interactions, state changes, event handlers
 - **Organisms**: Test composition, data flow, user workflows
-- **Pages**: Integration tests with routing and data fetching
+- **Templates**: Integration tests with routing and data fetching
+- **Pages**: E2E tests with full user flows
 
 ### Accessibility Standards
 
@@ -626,7 +532,7 @@ describe('MyComponent', () => {
 
 ```typescript
 // Use React.memo for expensive components
-export const ProjectItem = React.memo(function ProjectItem({ project }) {
+export const ProjectCard = React.memo(function ProjectCard({ project }) {
   return (
     // ...
   )
@@ -635,25 +541,26 @@ export const ProjectItem = React.memo(function ProjectItem({ project }) {
 // Lazy load heavy components
 import { lazy, Suspense } from 'react';
 
-const ImageCarousel = lazy(() => import('@/components/Organisms/ImageCarousel'));
+const ImageCarousel = lazy(() => import('@/components/organisms/image-carousel'));
 
 export function ProjectDetailPage() {
   return (
-    <Suspense fallback={<CircularProgress />}>
+    <Suspense fallback={<div>Loading...</div>}>
       <ImageCarousel images={images} />
     </Suspense>
   );
 }
 
-// Optimize images with lazy loading
-import { CardMedia } from '@mui/material';
+// Optimize images with Next.js Image
+import Image from 'next/image';
 
-<CardMedia
-  component="img"
-  image={project.imageList[0]}
+<Image
+  src={project.images[0]}
   alt={project.title}
+  width={400}
+  height={300}
   loading="lazy"
-  sx={{ height: 140 }}
+  className="h-full w-full object-contain"
 />
 ```
 
@@ -664,15 +571,17 @@ import { CardMedia } from '@mui/material';
 import { useCallback } from 'react';
 
 export function ProjectList() {
-  const handleProjectClick = useCallback((projectID: string) => {
-    navigate(`/projects/${projectID}`);
+  const navigate = useRouter();
+
+  const handleProjectClick = useCallback((id: string) => {
+    navigate.push(`/projects/${id}`);
   }, [navigate]);
 
   return (
     <>
       {projects.map(project => (
-        <ProjectItem
-          key={project.projectID}
+        <ProjectCard
+          key={project.id}
           project={project}
           onClick={handleProjectClick}
         />
@@ -687,7 +596,7 @@ import { useMemo } from 'react';
 export function ProjectListPage() {
   const filteredProjects = useMemo(() => {
     return projects.filter(p =>
-      selectedTags.every(tag => p.tagList.includes(tag))
+      selectedTags.every(tag => p.technologies.includes(tag))
     );
   }, [projects, selectedTags]);
 
@@ -730,24 +639,25 @@ export function ProjectListPage() {
 **Phase Evaluation:**
 
 1. **Design** - Define page layout and components needed
-2. **Atoms** - Identify required MUI components
+2. **Atoms** - Identify required shadcn/ui components
 3. **Molecules** - Check for existing molecules or create new ones
 4. **Organisms** - Check for existing organisms or create new ones
-5. **Data** - Implement data fetching with useEffect
-6. **State** - Add client-side state for interactions
-7. **Styling** - Apply responsive MUI sx props
-8. **Routing** - Add route to App.tsx
-9. **Tests** - Write integration tests
-10. **Verify** - Test in browser, check mobile responsiveness
+5. **Templates** - Create page template
+6. **Data** - Implement data fetching (Server Components preferred)
+7. **State** - Add client-side state for interactions if needed
+8. **Styling** - Apply responsive Tailwind classes
+9. **Routing** - Add route in app/ directory
+10. **Tests** - Write integration tests
+11. **Verify** - Test in browser, check mobile responsiveness
 
 **Steps:**
 
-1. Create page folder in `src/pages/[PageName]/`
-2. Create `[PageName].tsx` and optional `[PageName].styles.ts`
+1. Create route in `app/[route-name]/page.tsx`
+2. Create template in `components/templates/[route-name].tsx`
 3. Identify page-specific vs reusable components
-4. Compose organisms and molecules
-5. Implement data fetching in useEffect
-6. Add route to `App.tsx`
+4. Compose organisms and molecules in template
+5. Implement data fetching (Server Components or client-side)
+6. Add metadata for SEO
 7. Test and verify
 
 ### Scenario 2: Creating a Reusable Component
@@ -755,48 +665,51 @@ export function ProjectListPage() {
 **Phase Evaluation:**
 
 1. **Design** - Define component API and variants
-2. **Atoms** - Determine if it uses existing MUI atoms
+2. **Atoms** - Determine if it uses existing shadcn/ui atoms
 3. **Molecules** - Decide if it's a molecule or organism
 4. **Organisms** - Place in correct folder
-5. **Data** - Consider if it needs data fetching
-6. **State** - Determine if it needs local state
-7. **Styling** - Define styling with sx props or styled components
-8. **Routing** - NOT NEEDED (components don't handle routing)
-9. **Tests** - Write component tests
-10. **Verify** - Test in multiple contexts
+5. **Templates** - NOT NEEDED (unless it's a page template)
+6. **Data** - Consider if it needs data fetching
+7. **State** - Determine if it needs local state
+8. **Styling** - Define styling with Tailwind classes
+9. **Routing** - NOT NEEDED (components don't handle routing)
+10. **Tests** - Write component tests
+11. **Verify** - Test in multiple contexts
 
 **Steps:**
 
 1. Determine component level (molecule vs organism)
 2. Create TypeScript interfaces for props
 3. Implement component with proper typing
-4. Add styling with MUI sx props or styled components
+4. Add styling with Tailwind utility classes
 5. Write tests
 6. Document usage with JSDoc
-7. Export from appropriate folder index.ts
+7. Export from appropriate folder
 
 ### Scenario 3: Adding Interactivity to a Component
 
 **Phase Evaluation:**
 
 1. **Design** - SKIP (layout already exists)
-2. **Atoms** - CHECK (may need interactive MUI atoms)
+2. **Atoms** - CHECK (may need interactive shadcn/ui atoms)
 3. **Molecules** - REQUIRED (create interactive molecule)
 4. **Organisms** - CHECK (update if needed)
-5. **Data** - SKIP (data already available)
-6. **State** - REQUIRED (add client-side state with useState)
-7. **Styling** - CHECK (ensure hover states work)
-8. **Routing** - CHECK (if navigation needed)
-9. **Tests** - REQUIRED (test interactions)
-10. **Verify** - REQUIRED (test user interactions)
+5. **Templates** - NOT NEEDED (no template changes)
+6. **Data** - SKIP (data already available)
+7. **State** - REQUIRED (add client-side state with useState)
+8. **Styling** - CHECK (ensure hover states work)
+9. **Routing** - CHECK (if navigation needed)
+10. **Tests** - REQUIRED (test interactions)
+11. **Verify** - REQUIRED (test user interactions)
 
 **Steps:**
 
 1. Identify which part needs interactivity
-2. Add useState or Redux for state management
-3. Add event handlers (onClick, onChange, etc.)
-4. Implement interaction logic
-5. Test interaction flow
+2. Add 'use client' directive if needed
+3. Add useState or context for state management
+4. Add event handlers (onClick, onChange, etc.)
+5. Implement interaction logic
+6. Test interaction flow
 
 ### Scenario 4: Fixing a Bug
 
@@ -806,12 +719,13 @@ export function ProjectListPage() {
 2. **Atoms** - CHECK (if bug is in atom)
 3. **Molecules** - CHECK (if bug is in molecule)
 4. **Organisms** - CHECK (if bug is in organism)
-5. **Data** - CHECK (if bug is in data fetching)
-6. **State** - CHECK (if bug is in state management)
-7. **Styling** - CHECK (if bug is visual)
-8. **Routing** - CHECK (if bug is in navigation)
-9. **Tests** - REQUIRED (add test for bug scenario)
-10. **Verify** - REQUIRED (ensure fix works)
+5. **Templates** - CHECK (if bug is in template)
+6. **Data** - CHECK (if bug is in data fetching)
+7. **State** - CHECK (if bug is in state management)
+8. **Styling** - CHECK (if bug is visual)
+9. **Routing** - CHECK (if bug is in navigation)
+10. **Tests** - REQUIRED (add test for bug scenario)
+11. **Verify** - REQUIRED (ensure fix works)
 
 **Steps:**
 
@@ -827,21 +741,22 @@ export function ProjectListPage() {
 **Phase Evaluation:**
 
 1. **Design** - REQUIRED (understand new design)
-2. **Atoms** - CHECK (may need new MUI variants)
+2. **Atoms** - CHECK (may need new shadcn/ui variants)
 3. **Molecules** - CHECK (may need updates)
 4. **Organisms** - CHECK (layout changes)
-5. **Data** - NOT NEEDED (no data changes)
-6. **State** - NOT NEEDED (no state changes)
-7. **Styling** - REQUIRED (apply new MUI styles)
-8. **Routing** - NOT NEEDED (no routing changes)
-9. **Tests** - CHECK (visual regression tests)
-10. **Verify** - REQUIRED (verify design matches)
+5. **Templates** - CHECK (page layout changes)
+6. **Data** - NOT NEEDED (no data changes)
+7. **State** - NOT NEEDED (no state changes)
+8. **Styling** - REQUIRED (apply new Tailwind styles)
+9. **Routing** - NOT NEEDED (no routing changes)
+10. **Tests** - CHECK (visual regression tests)
+11. **Verify** - REQUIRED (verify design matches)
 
 **Steps:**
 
 1. Review design specifications
 2. Identify components affected
-3. Update MUI sx props or styled components
+3. Update Tailwind utility classes
 4. Update component variants if needed
 5. Ensure responsive design
 6. Test across breakpoints
@@ -853,39 +768,30 @@ Before proposing changes, verify:
 
 - [ ] Component placed in correct atomic layer
 - [ ] TypeScript types are explicit and exported
-- [ ] MUI components used appropriately
-- [ ] Data fetching follows React patterns (useEffect, etc.)
-- [ ] MUI sx props or styled components used correctly
-- [ ] Responsive design implemented with MUI breakpoints
+- [ ] shadcn/ui components used appropriately
+- [ ] Data fetching follows Next.js patterns (Server Components, useEffect, etc.)
+- [ ] Tailwind utility classes used correctly
+- [ ] Responsive design implemented with Tailwind breakpoints
 - [ ] Accessibility standards met
 - [ ] Tests cover new functionality
 - [ ] Component follows composition patterns
-- [ ] No prop drilling (use composition/context/Redux)
+- [ ] No prop drilling (use composition/context)
 - [ ] Performance optimizations considered (React.memo, useMemo, useCallback)
 
 ## Quick Reference Commands
 
 ```bash
 # Development
-npm start                   # Start development server with CRACO
+npm run dev                 # Start development server
 npm run build               # Production build
-npm run deploy              # Deploy to GitHub Pages
-
-# Testing
-npm test                    # Run tests with CRACO
-npm run test:watch          # Watch mode (use 'npm test' then press 'a')
-npm run test:coverage       # Coverage report
+npm start                   # Start production server
 
 # Code Quality
 npm run lint                # Run ESLint
-npm run format              # Format with Prettier
-npm run pre-commit          # Run lint + format
+npm run format:prettier     # Format with Prettier
 
 # Type Checking
 npx tsc --noEmit           # Type check without emitting
-
-# Utilities
-npm run kill-server         # Kill process on port 3000
 ```
 
 ## Context7 Integration
@@ -893,17 +799,17 @@ npm run kill-server         # Kill process on port 3000
 **Before implementing patterns, fetch latest best practices:**
 
 ```
-Use mcp_context7_resolve-library-id to find React/MUI documentation
+Use mcp_context7_resolve-library-id to find Next.js/shadcn/ui documentation
 Use mcp_context7_get-library-docs to fetch specific patterns
 
 Topics to reference:
+- Next.js 15 App Router and Server Components
 - React 19 features and hooks (useState, useEffect, useMemo, useCallback)
-- Material-UI component API and theming
-- React Router navigation patterns (useNavigate, useParams, Link)
-- Redux Toolkit state management (createSlice, configureStore)
-- Emotion/Styled Components styling patterns
+- shadcn/ui component API and Radix UI primitives
+- Tailwind CSS utility classes and responsive design
+- Next.js routing patterns (Link, useRouter, useParams)
 - Testing with React Testing Library
-- Performance optimization techniques
+- Performance optimization techniques (Image optimization, lazy loading)
 ```
 
 ## Documentation References
@@ -911,43 +817,70 @@ Topics to reference:
 **Essential Reading:**
 
 1. **Internal Documentation**
-   - Atomic Design principles (three-layer approach)
-   - Component structure in `src/components/`
-   - Type definitions in `src/type/`
+   - **Atomic Design Component Architecture** (`atomic-components.instructions.md`) - Component placement, hierarchy, and best practices
+   - Type definitions in `lib/`
 
 2. **External Documentation (via Context7)**
+   - Next.js 15: App Router and Server Components
    - React 19: Hooks and composition patterns
-   - Material-UI: Component API and theming
-   - React Router: Navigation and routing
-   - Redux Toolkit: State management
-   - Emotion: Styled components and theming
+   - shadcn/ui: Component API and Radix UI primitives
+   - Tailwind CSS: Utility classes and theming
+
+## Project-Specific Preferences
+
+### Text String Rendering in JSX
+
+**Always wrap text strings in curly braces `{}` when rendering in JSX components.**
+
+**Correct approach:**
+
+```typescript
+// Static text - always use curly braces with string
+<p>{"text"}</p>
+<h1>{"Welcome to my portfolio"}</h1>
+<span>{"Loading..."}</span>
+
+// Dynamic text with variables - use template literals inside curly braces
+<p>{`text ${someVariable}`}</p>
+<h2>{`Project: ${project.title}`}</h2>
+<div>{`${user.firstName} ${user.lastName}`}</div>
+```
+
+**Incorrect approach:**
+
+```typescript
+// Don't use plain text without curly braces
+<p>text</p>
+<h1>Welcome to my portfolio</h1>
+<span>Loading...</span>
+```
+
+**Rationale:**
+
+- Maintains consistency by treating all text as JavaScript expressions
+- Makes it immediately clear that the content is a value, not markup
+- Provides a consistent pattern whether text is static or dynamic
+- Easier to refactor from static to dynamic text later
+
+**Note:** This rule is about **always using curly braces `{}`** for text content, not about quote style. Use double quotes, single quotes, or template literals as appropriate for the content.
+
+---
 
 ## Summary
 
 ### Key Principles
 
-1. **React 19 with TypeScript** - Modern React patterns and hooks
-2. **Atomic Design three layers** - Atoms → Molecules → Organisms → Pages
-3. **Page-specific components in page folders** - Keep related code together
-4. **Extract to shared only when reused** 2+ times across pages
-5. **TypeScript everywhere** - Explicit types, no `any`
-6. **Material-UI for components and styling** - MUI sx props and theme
-7. **Accessibility first** - WCAG AA compliance
-8. **React Router for navigation** - useNavigate, useParams, Link
-9. **Redux for global state** - Redux Toolkit with slices
-10. **Test reusable components** - Especially molecules and organisms
-11. **Performance always** - Optimize images, lazy load, memoize
-
-### Quick Component Placement Guide
-
-| Component Type       | Reused?        | Location                            |
-| -------------------- | -------------- | ----------------------------------- |
-| **Basic UI Element** | N/A            | `components/Atoms/` (MUI or custom) |
-| **Atom Combination** | Yes (2+ pages) | `components/Molecules/`             |
-| **Atom Combination** | No (1 page)    | `pages/[PageName]/` (inline)        |
-| **Complex Section**  | Yes (2+ pages) | `components/Organisms/`             |
-| **Complex Section**  | No (1 page)    | `pages/[PageName]/` (inline)        |
+1. **Next.js 15 with React 19 and TypeScript** - Modern React patterns with App Router
+2. **Atomic Design four layers** - Atoms → Molecules → Organisms → Templates → Pages (see `atomic-components.instructions.md`)
+3. **TypeScript everywhere** - Explicit types, no `any`
+4. **shadcn/ui + Tailwind CSS** - Component library with utility-first styling
+5. **Accessibility first** - WCAG AA compliance
+6. **Next.js App Router** - File-based routing with Server/Client Components
+7. **Local state with hooks/context** - useState, useReducer, Context API
+8. **Test reusable components** - Especially molecules and organisms
+9. **Performance always** - Optimize images, lazy load, memoize
+10. **Server Components by default** - Client Components only when needed
 
 ---
 
-This ensures high-quality, maintainable, accessible, and performant frontend code following React 19, Material-UI, and Atomic Design best practices.
+This ensures high-quality, maintainable, accessible, and performant frontend code following Next.js 15, shadcn/ui, Tailwind CSS, and Atomic Design best practices.

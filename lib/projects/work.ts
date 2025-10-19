@@ -18,41 +18,9 @@ import VipLoyaltySlide3 from '@/public/projects/vip-loyalty-slide-3.png';
 import VipLoyaltySlide4 from '@/public/projects/vip-loyalty-slide-4.png';
 import VipLoyaltySlide5 from '@/public/projects/vip-loyalty-slide-5.png';
 import VipLoyaltySlide6 from '@/public/projects/vip-loyalty-slide-6.png';
-import { StaticImageData } from 'next/image';
+import { Project } from '.';
 
-export type Project = {
-  id: string;
-  title: string;
-  description: string;
-  fullDescription: string[];
-  date: string;
-  images: StaticImageData[];
-  domains: string[];
-  technologies: string[];
-  githubUrl: string;
-  liveUrl: string;
-  lessons: string[];
-  achievements: string[];
-  careerExperience?: string;
-};
-
-export const Projects: Project[] = [
-  // {
-  //   id: 'sorting-visualizer',
-  //   title: 'Sorting Algorithm Visualizer',
-  //   description:
-  //     'Interactive tool illustrating sorting algorithms visually, aiding the understanding of algorithmic processes',
-  //   fullDescription: [],
-  //   images: [],
-  //   date: '',
-  //   domains: ['Frontend', 'Data'],
-  //   technologies: ['React', 'Javascript', 'TypeScript'],
-  //   githubUrl: '',
-  //   liveUrl: '',
-  //   lessons: [],
-  //   achievements: [],
-  //   careerExperience: 'Senior Software Engineer @Tech Innovations Inc.',
-  // },
+export const WorkProjects: Project[] = [
   {
     id: 'digital-signage',
     title: 'Travel Information Digital Signage Ecosystem',
@@ -382,55 +350,6 @@ export const Projects: Project[] = [
     careerExperience: 'Software Engineer @PALO IT Hong Kong Limited',
   },
   {
-    id: 'pocket-chiro',
-    title: 'Pocket Chiro',
-    description:
-      'A mobile app connecting patients with personalized chiropractic programs, featuring AI-powered guidance and progress tracking',
-    fullDescription: [],
-    images: [],
-    date: '',
-    domains: ['Mobile', 'AI', 'Healthcare'],
-    technologies: ['React Native', 'AI/ML', 'Node.js'],
-    githubUrl: '',
-    liveUrl: '',
-    lessons: [],
-    achievements: [],
-    careerExperience: 'Full Stack Developer @Pocket Chiro (Self-Employed)',
-  },
-  {
-    id: 'influencer-marketplace',
-    title: 'Influencer Marketplace Platform',
-    description:
-      'A platform connecting early-stage content creators with brands for authentic promotion and monetization opportunities',
-    fullDescription: [],
-    images: [],
-    date: '',
-    domains: ['Frontend', 'Backend', 'Marketplace'],
-    technologies: ['React', 'Node.js', 'PostgreSQL'],
-    githubUrl: '',
-    liveUrl: '',
-    lessons: [],
-    achievements: [],
-    careerExperience:
-      'Full Stack Developer @Influencer Marketplace (Self-Employed)',
-  },
-  {
-    id: 'hong-kong-developer-network',
-    title: 'HK Developer Network',
-    description:
-      'A community platform for developers in Hong Kong to share knowledge, experiences, and elevate the tech industry reputation',
-    fullDescription: [],
-    images: [],
-    date: '',
-    domains: ['Others'],
-    technologies: ['Community Building', 'Event Management'],
-    githubUrl: '',
-    liveUrl: '',
-    lessons: [],
-    achievements: [],
-    careerExperience: 'Co-Host @HK Developer Network (Self-Organized)',
-  },
-  {
     id: 'ecommerce-platform',
     title: 'Ecomportal',
     description:
@@ -460,40 +379,6 @@ export const Projects: Project[] = [
       'Revamped complete job board for eCommerce industry',
     ],
     careerExperience: 'Full Stack Developer @Ecomportal (Self-Employed)',
-  },
-  {
-    id: 'cover-finance',
-    title: 'Cover Finance',
-    description:
-      'A DeFi platform exploring smart contracts, tokenomics, and decentralized financial solutions',
-    fullDescription: [],
-    images: [],
-    date: '',
-    domains: ['Blockchain', 'DeFi', 'Frontend'],
-    technologies: ['React', 'Solidity', 'Web3.js', 'Ethereum'],
-    githubUrl: '',
-    liveUrl: '',
-    lessons: [],
-    achievements: [],
-    careerExperience:
-      'Frontend Lead / Founding Member @Cover Finance (Self-Employed)',
-  },
-  {
-    id: 'project-humankind-nft',
-    title: 'Project Humankind NFT',
-    description:
-      'An NFT collection promoting unity and kindness across all backgrounds with the slogan "Be human, be kind"',
-    fullDescription: [],
-    images: [],
-    date: '',
-    domains: ['Blockchain', 'NFT', 'Frontend'],
-    technologies: ['React', 'Solidity', 'Web3.js', 'IPFS'],
-    githubUrl: '',
-    liveUrl: '',
-    lessons: [],
-    achievements: [],
-    careerExperience:
-      'Tech Lead / Founding Member @Project Humankind NFT (Self-Employed)',
   },
   {
     id: 'sketch-basketball-website',
@@ -542,56 +427,5 @@ export const Projects: Project[] = [
     lessons: [],
     achievements: [],
     careerExperience: 'Junior Software Developer @Dayta AI Limited',
-  },
-  {
-    id: 'comic-books',
-    title: 'Fairy Tales Retold',
-    description:
-      'A series of comic books teaching fundamental programming concepts to children ages 5-12 through reimagined fairy tales',
-    fullDescription: [],
-    images: [],
-    date: '',
-    domains: ['Education', 'Content Creation'],
-    technologies: ['Storytelling', 'Educational Design'],
-    githubUrl: '',
-    liveUrl: '',
-    lessons: [],
-    achievements: [],
-    careerExperience: 'Author (Almost) @Fairy Tales Retold (Self-Employed)',
-  },
-  {
-    id: 'portfolio-website-v2',
-    title: 'My Own Portfolio Website - Version 2.0',
-    description:
-      'A personal portfolio website showcasing who I am as a person, and as a software engineer',
-    fullDescription: [''],
-    images: [],
-    date: '',
-    domains: ['Frontend'],
-    technologies: ['React', 'TypeScript', 'Next.js'],
-    githubUrl: '',
-    liveUrl: 'https://ollehmichael.github.io',
-    lessons: [],
-    achievements: [
-      'Designed and developed entirely by AI, using Gen-e2 Delivery Model',
-      'Finished refactoring from v1.0 to v2.0 in 20 hours',
-    ],
-    careerExperience: 'My Project',
-  },
-  {
-    id: 'portfolio-website-v1',
-    title: 'My Own Portfolio Website - Version 1.0',
-    description:
-      'A personal portfolio website showcasing who I am as a person, and as a software engineer',
-    fullDescription: [''],
-    images: [],
-    date: '',
-    domains: ['Frontend'],
-    technologies: ['React', 'TypeScript', 'Next.js'],
-    githubUrl: '',
-    liveUrl: '',
-    lessons: [],
-    achievements: ['Developed the whole website in 2 full days'],
-    careerExperience: 'My Project',
   },
 ];

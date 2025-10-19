@@ -10,6 +10,95 @@ export default async function ProjectDetailsView({
 }: {
   project: Project;
 }) {
+  // Helper function to detect paragraph type and render appropriately
+  function renderFormattedParagraph(paragraph: string, index: number) {
+    // Empty string - render as line break
+    if (paragraph.trim() === '') {
+      return <br key={index} />;
+    }
+
+    // Heading with # markdown syntax (## Heading)
+    if (paragraph.startsWith('#')) {
+      const level = paragraph.match(/^#+/)?.[0].length || 1;
+      const text = paragraph.replace(/^#+\s*/, '');
+
+      if (level === 1) {
+        return (
+          <h2 key={index} className="mt-8 text-2xl font-bold first:mt-0">
+            {text}
+          </h2>
+        );
+      } else {
+        return (
+          <h3 key={index} className="mt-6 text-xl font-semibold first:mt-0">
+            {text}
+          </h3>
+        );
+      }
+    }
+
+    // ALL CAPS heading with colon (OVERVIEW:)
+    if (/^[A-Z\s]+:/.test(paragraph)) {
+      const text = paragraph.replace(':', '');
+      return (
+        <h3
+          key={index}
+          className="mt-6 text-lg font-bold tracking-wide uppercase first:mt-0"
+        >
+          {text}
+        </h3>
+      );
+    }
+
+    // List item (starts with •, -, or *)
+    if (/^[•\-*]\s/.test(paragraph)) {
+      const text = paragraph.replace(/^[•\-*]\s*/, '');
+      return (
+        <li
+          key={index}
+          className="text-muted-foreground ml-6 text-base leading-relaxed"
+        >
+          {renderInlineFormatting(text)}
+        </li>
+      );
+    }
+
+    // Regular paragraph with inline formatting
+    return (
+      <p
+        key={index}
+        className="text-muted-foreground text-base leading-relaxed"
+      >
+        {renderInlineFormatting(paragraph)}
+      </p>
+    );
+  }
+
+  // Helper function to render inline formatting (bold, italic, etc.)
+  function renderInlineFormatting(text: string) {
+    // Split by ** for bold text
+    const parts = text.split(/(\*\*.*?\*\*)/g);
+
+    return parts.map((part, i) => {
+      // Bold text wrapped in **
+      if (part.startsWith('**') && part.endsWith('**')) {
+        const content = part.slice(2, -2);
+        return (
+          <strong key={i} className="text-foreground font-semibold">
+            {content}
+          </strong>
+        );
+      }
+
+      // Check for HTML strong tags
+      if (part.includes('<strong>') || part.includes('<em>')) {
+        return <span key={i} dangerouslySetInnerHTML={{ __html: part }} />;
+      }
+
+      return part;
+    });
+  }
+
   return (
     <div className="mx-auto max-w-5xl px-4 pb-12 sm:px-6 md:pb-20 lg:px-8">
       {/* Back Button and Title */}
@@ -77,14 +166,9 @@ export default async function ProjectDetailsView({
 
           {/* Full Description */}
           <div className="space-y-4">
-            {project.fullDescription.map((paragraph, index) => (
-              <p
-                key={index}
-                className="text-muted-foreground text-base leading-relaxed"
-              >
-                {paragraph}
-              </p>
-            ))}
+            {project.fullDescription.map((paragraph, index) =>
+              renderFormattedParagraph(paragraph, index)
+            )}
           </div>
 
           {/* Tech Stack */}
