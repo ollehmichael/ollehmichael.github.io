@@ -1,4 +1,5 @@
 import { Badge } from '@/components/ui/badge';
+import { DOMAIN_TECH_MAP } from '@/lib/constants';
 import { Project } from '@/lib/projects';
 import { cn } from '@/lib/utils';
 import { Briefcase, ImageIcon } from 'lucide-react';
@@ -14,17 +15,21 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   const {
     id,
     title,
-    description,
+    fullDescription,
     images,
     domains,
     technologies,
     careerExperience,
   } = project;
   // Truncate description to ~150 characters
+  const firstFullDescription =
+    fullDescription && fullDescription.length > 0
+      ? fullDescription[0]
+      : 'Mike is currently updating the description...';
   const truncatedDescription =
-    description.length > 150
-      ? `${description.substring(0, 150)}...`
-      : description;
+    firstFullDescription.length > 80
+      ? `${firstFullDescription.substring(0, 80)}...`
+      : firstFullDescription;
 
   return (
     <Link
@@ -71,17 +76,28 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         )}
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-1">
           {domains.slice(0, 2).map((domain) => (
             <Badge key={domain} variant="secondary" className="text-xs">
               {domain}
             </Badge>
           ))}
-          {technologies.slice(0, 2).map((tech) => (
-            <Badge key={tech} variant="outline" className="text-xs">
-              {tech}
+          {technologies.slice(0, 2).map((tech) => {
+            const domain =
+              DOMAIN_TECH_MAP.flatMap((domain) => domain.technologies).find(
+                (t) => t.key === tech
+              )?.name ?? tech;
+            return (
+              <Badge key={tech} variant="outline" className="text-xs">
+                {domain}
+              </Badge>
+            );
+          })}
+          {domains.length + technologies.length > 4 && (
+            <Badge key="more" variant="secondary" className="text-xs">
+              {`+ ${domains.length + technologies.length - 4} more`}
             </Badge>
-          ))}
+          )}
         </div>
       </div>
     </Link>

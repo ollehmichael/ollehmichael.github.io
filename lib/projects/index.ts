@@ -1,4 +1,5 @@
 import { StaticImageData } from 'next/image';
+import { Domain, Technology } from '../constants';
 import { PersonalProjects } from './personal';
 import { WorkProjects } from './work';
 
@@ -9,8 +10,8 @@ export type Project = {
   fullDescription: string[];
   date: string;
   images: StaticImageData[];
-  domains: string[];
-  technologies: string[];
+  domains: Domain[];
+  technologies: Technology[];
   githubUrl: string;
   liveUrl: string;
   lessons: string[];

@@ -2,15 +2,23 @@
 
 import { FilterChip } from '@/components/atoms/filter-chip';
 import { ProjectCard } from '@/components/molecules/project-card';
-import { PROJECT_DOMAINS, PROJECT_TECHNOLOGIES } from '@/lib/constants';
+import {
+  Domain,
+  PROJECT_DOMAINS,
+  PROJECT_TECHNOLOGIES,
+  Technology,
+  TECHNOLOGY_GROUP_MAP,
+} from '@/lib/constants';
 import { Projects } from '@/lib/projects';
 import { useMemo, useState } from 'react';
 
 export default function ProjectsView() {
-  const [activeDomains, setActiveDomains] = useState<string[]>([]);
-  const [activeTechnologies, setActiveTechnologies] = useState<string[]>([]);
+  const [activeDomains, setActiveDomains] = useState<Domain[]>([]);
+  const [activeTechnologies, setActiveTechnologies] = useState<Technology[]>(
+    []
+  );
 
-  const toggleDomain = (domain: string) => {
+  const toggleDomain = (domain: Domain) => {
     setActiveDomains((prev) =>
       prev.includes(domain)
         ? prev.filter((d) => d !== domain)
@@ -18,7 +26,7 @@ export default function ProjectsView() {
     );
   };
 
-  const toggleTechnology = (tech: string) => {
+  const toggleTechnology = (tech: Technology) => {
     setActiveTechnologies((prev) =>
       prev.includes(tech) ? prev.filter((t) => t !== tech) : [...prev, tech]
     );
@@ -29,9 +37,19 @@ export default function ProjectsView() {
       const domainMatch =
         activeDomains.length === 0 ||
         activeDomains.some((d) => project.domains.includes(d));
+
+      // For technology filtering with groups
       const techMatch =
         activeTechnologies.length === 0 ||
-        activeTechnologies.some((t) => project.technologies.includes(t));
+        activeTechnologies.some((selectedTech) => {
+          // Get all technologies in this group
+          const techGroup = (TECHNOLOGY_GROUP_MAP[selectedTech] || [
+            selectedTech,
+          ]) as Technology[];
+          // Check if project has at least one technology from this group
+          return techGroup.some((tech) => project.technologies.includes(tech));
+        });
+
       return domainMatch && techMatch;
     });
   }, [activeDomains, activeTechnologies]);
@@ -40,7 +58,8 @@ export default function ProjectsView() {
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-20 lg:px-8">
       {/* Title */}
       <h1 className="animate-fade-in mb-12 text-4xl font-bold sm:text-5xl md:text-6xl">
-        My <span className="text-primary">Projects</span>
+        {'My '}
+        <span className="text-primary">{'Projects'}</span>
       </h1>
 
       {/* Filters */}
@@ -48,7 +67,7 @@ export default function ProjectsView() {
         {/* Domain Filters */}
         <div className="space-y-3">
           <h2 className="text-muted-foreground text-sm font-semibold tracking-wider uppercase">
-            Filter by Domain
+            {'Filter by Domain'}
           </h2>
           <div className="flex flex-wrap gap-2">
             {PROJECT_DOMAINS.map((domain) => (
@@ -65,7 +84,7 @@ export default function ProjectsView() {
         {/* Technology Filters */}
         <div className="space-y-3">
           <h2 className="text-muted-foreground text-sm font-semibold tracking-wider uppercase">
-            Filter by Technology
+            {'Filter by Technology'}
           </h2>
           <div className="flex flex-wrap gap-2">
             {PROJECT_TECHNOLOGIES.map((tech) => (
@@ -83,7 +102,7 @@ export default function ProjectsView() {
         {(activeDomains.length > 0 || activeTechnologies.length > 0) && (
           <div className="text-muted-foreground flex items-center gap-4 text-sm">
             <span>
-              Showing {filteredProjects.length} of {Projects.length} projects
+              {`Showing ${filteredProjects.length} of ${Projects.length} projects`}
             </span>
             <button
               onClick={() => {
@@ -92,7 +111,7 @@ export default function ProjectsView() {
               }}
               className="text-primary hover:text-primary/80 transition-colors"
             >
-              Clear all filters
+              {'Clear all filters'}
             </button>
           </div>
         )}
@@ -109,7 +128,7 @@ export default function ProjectsView() {
       {filteredProjects.length === 0 && (
         <div className="py-12 text-center">
           <p className="text-muted-foreground text-lg">
-            No projects match your filters. Try adjusting your selection.
+            {'No projects match your filters. Try adjusting your selection.'}
           </p>
         </div>
       )}

@@ -1,6 +1,5 @@
 import { ImageCarousel } from '@/components/organisms/image-carousel';
 import { TechStackDiagram } from '@/components/organisms/tech-stack-diagram';
-import { Badge } from '@/components/ui/badge';
 import { Project } from '@/lib/projects';
 import { ArrowLeft, Briefcase, ExternalLink, Github } from 'lucide-react';
 import Link from 'next/link';
@@ -25,13 +24,13 @@ export default async function ProjectDetailsView({
       if (level === 1) {
         return (
           <h2 key={index} className="mt-8 text-2xl font-bold first:mt-0">
-            {text}
+            {renderInlineFormatting(text)}
           </h2>
         );
       } else {
         return (
           <h3 key={index} className="mt-6 text-xl font-semibold first:mt-0">
-            {text}
+            {renderInlineFormatting(text)}
           </h3>
         );
       }
@@ -45,7 +44,7 @@ export default async function ProjectDetailsView({
           key={index}
           className="mt-6 text-lg font-bold tracking-wide uppercase first:mt-0"
         >
-          {text}
+          {renderInlineFormatting(text)}
         </h3>
       );
     }
@@ -56,7 +55,7 @@ export default async function ProjectDetailsView({
       return (
         <li
           key={index}
-          className="text-muted-foreground ml-6 text-base leading-relaxed"
+          className="text-foreground/85 ml-6 text-base leading-relaxed"
         >
           {renderInlineFormatting(text)}
         </li>
@@ -65,37 +64,57 @@ export default async function ProjectDetailsView({
 
     // Regular paragraph with inline formatting
     return (
-      <p
-        key={index}
-        className="text-muted-foreground text-base leading-relaxed"
-      >
+      <p key={index} className="text-foreground/85 text-base leading-relaxed">
         {renderInlineFormatting(paragraph)}
       </p>
     );
   }
 
-  // Helper function to render inline formatting (bold, italic, etc.)
+  // Helper function to render inline formatting (links and styled text)
   function renderInlineFormatting(text: string) {
-    // Split by ** for bold text
-    const parts = text.split(/(\*\*.*?\*\*)/g);
+    // First, split by markdown links [text](url)
+    const linkPattern = /(\[.*?\]\(.*?\))/g;
+    const linkParts = text.split(linkPattern);
 
-    return parts.map((part, i) => {
-      // Bold text wrapped in **
-      if (part.startsWith('**') && part.endsWith('**')) {
-        const content = part.slice(2, -2);
+    return linkParts.map((linkPart, linkIndex) => {
+      // Check if this part is a markdown link
+      const linkMatch = linkPart.match(/\[(.*?)\]\((.*?)\)/);
+
+      if (linkMatch) {
+        const [, linkText, url] = linkMatch;
         return (
-          <strong key={i} className="text-foreground font-semibold">
-            {content}
-          </strong>
+          <Link
+            key={linkIndex}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary font-medium hover:underline"
+          >
+            {linkText}
+          </Link>
         );
       }
 
-      // Check for HTML strong tags
-      if (part.includes('<strong>') || part.includes('<em>')) {
-        return <span key={i} dangerouslySetInnerHTML={{ __html: part }} />;
-      }
+      // Process remaining text for styled text {text|className}
+      const stylePattern = /(\{.*?\|.*?\})/g;
+      const styleParts = linkPart.split(stylePattern);
 
-      return part;
+      return styleParts.map((stylePart, styleIndex) => {
+        // Check if this part is styled text
+        const styleMatch = stylePart.match(/\{(.*?)\|(.*?)\}/);
+
+        if (styleMatch) {
+          const [, styledText, className] = styleMatch;
+          return (
+            <span key={`${linkIndex}-${styleIndex}`} className={className}>
+              {styledText}
+            </span>
+          );
+        }
+
+        // Return plain text
+        return stylePart;
+      });
     });
   }
 
@@ -108,7 +127,7 @@ export default async function ProjectDetailsView({
           className="text-muted-foreground hover:text-primary inline-flex items-center gap-2 transition-colors"
         >
           <ArrowLeft size={20} />
-          <span>Back to Projects</span>
+          <span>{'Back to Projects'}</span>
         </Link>
         <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl">
           {project.title}
@@ -134,39 +153,60 @@ export default async function ProjectDetailsView({
         {/* Project Details */}
         <div className="animate-fade-in-delay-2 space-y-8">
           {/* Category Badges and Links */}
-          <div className="flex flex-wrap items-center gap-3">
-            {project.domains.map((domain) => (
+          {project.githubUrl && project.liveUrl && (
+            <div className="flex flex-wrap items-center gap-3">
+              {/* {project.domains.map((domain) => (
               <Badge key={domain} variant="secondary" className="text-sm">
                 {domain}
               </Badge>
+            ))} */}
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary p-2 transition-colors"
+                  aria-label="View on GitHub"
+                >
+                  <Github size={20} />
+                </a>
+              )}
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary p-2 transition-colors"
+                  aria-label="View live site"
+                >
+                  <ExternalLink size={20} />
+                </a>
+              )}
+            </div>
+          )}
+
+          {/* Achievements */}
+          <div className="space-y-4">
+            {project.achievements.map((paragraph, index) => (
+              <p key={index} className="text-base leading-relaxed">
+                {renderInlineFormatting(paragraph)}
+              </p>
             ))}
-            {project.githubUrl && (
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary p-2 transition-colors"
-                aria-label="View on GitHub"
-              >
-                <Github size={20} />
-              </a>
-            )}
-            {project.liveUrl && (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary p-2 transition-colors"
-                aria-label="View live site"
-              >
-                <ExternalLink size={20} />
-              </a>
-            )}
           </div>
 
           {/* Full Description */}
           <div className="space-y-4">
+            <h2 className="mt-8 text-2xl font-bold first:mt-0">
+              {'What is this project about?'}
+            </h2>
             {project.fullDescription.map((paragraph, index) =>
+              renderFormattedParagraph(paragraph, index)
+            )}
+          </div>
+
+          {/* Lessons Learned */}
+          <div className="space-y-4">
+            {project.lessons.map((paragraph, index) =>
               renderFormattedParagraph(paragraph, index)
             )}
           </div>
@@ -178,17 +218,6 @@ export default async function ProjectDetailsView({
               <span>Tech Stack</span>
             </h2>
             <TechStackDiagram technologies={project.technologies} />
-            {/* Old Tech Stack Implementation - Commented Out */}
-            {/* <div className="flex flex-wrap gap-3">
-                {project.technologies.map((tech) => (
-                  <div
-                    key={tech}
-                    className="bg-card border-border hover:border-primary flex items-center gap-2 rounded-lg border px-4 py-2 transition-colors"
-                  >
-                    <span className="text-sm font-medium">{tech}</span>
-                  </div>
-                ))}
-              </div> */}
           </div>
         </div>
       </div>
